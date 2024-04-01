@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -9,7 +10,19 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        darkColor: "#121212",
+        lightColor: "#fafdf6",
+        secondary: "#343434",
+        accent1: "#ff1053",
+        accent2: "#8a4fff",
+      },
+      fontFamily: {
+        bodyText: ["Hind", "sans-serif"],
+        titleText: ["Poppins", "sans-serif"],
+      },
+    },
+    plugins: [],
   },
-  plugins: [],
 };
