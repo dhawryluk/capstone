@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-48">
+  <div class="">
     <h1 class="text-2xl text-center p-6">This is the Games Page</h1>
     <div class="grid grid-cols-4 gap-4">
       <div v-for="game in results" :key="game.id">
@@ -12,14 +12,14 @@
 </template>
 
 <script setup>
-// definePageMeta({
-//   layout: "games",
-// });
+definePageMeta({
+  layout: "games",
+});
 
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMES_API_URL}games?key=${runtimeConfig.public.GAMES_API_KEY}`
+  `${runtimeConfig.public.GAMES_API_URL}/games?key=${runtimeConfig.public.GAMES_API_KEY}`
 );
 let results = [];
 

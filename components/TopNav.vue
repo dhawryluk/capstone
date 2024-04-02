@@ -1,5 +1,5 @@
 <template>
-  <div class="static flex justify-end gap-12 text-accent2 p-4">
+  <div class="absolute right-4 flex justify-end gap-12 text-accent2 p-4">
     <NuxtLink
       ><Icon name="heroicons:chat-bubble-oval-left" size="24" class=""></Icon
     ></NuxtLink>

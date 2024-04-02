@@ -1,13 +1,13 @@
 <template>
   <container
-    class="absolute top-14 left-28 w-5/6 grid grid-cols-3 gap-4 grid-rows-3 m-auto"
+    class="w-5/6 m-auto pt-14 grid grid-cols-3 gap-4 grid-rows-3"
   >
     <div class="col-span-2 row-span-3 bg-secondary p-4 rounded-lg">
-      <Img src="/assets/images/scarlet.png" class="w-full rounded-lg"></Img>
+      <img src="/assets/images/scarlet.png" class="w-full rounded-lg"></img>
     </div>
-    <div class="col-row-1 bg-accent1 rounded-xl">PlaceHolder</div>
-    <div class="col-row-1 bg-accent2 rounded-xl">PlaceHolder</div>
-    <div class="col-row-1 bg-accent1 rounded-xl">PlaceHolder</div>
+    <div class="col-row-1 bg-secondary rounded-xl text-center">PlaceHolder</div>
+    <div class="col-row-1 bg-secondary rounded-xl text-center">PlaceHolder</div>
+    <div class="col-row-1 bg-secondary rounded-xl text-center">PlaceHolder</div>
   </container>
 </template>
 

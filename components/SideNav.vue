@@ -1,5 +1,7 @@
 <template>
-  <div class="static flex flex-col gap-12 p-4 bg-secondary w-16 rounded-lg">
+  <div
+    class="absolute top-14 flex flex-col gap-12 p-4 bg-secondary w-16 rounded-lg"
+  >
     <NuxtLink
       ><Icon
         name="humbleicons:dots-horizontal"
