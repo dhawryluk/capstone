@@ -17,10 +17,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "games",
-});
-
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
@@ -35,6 +31,10 @@ if (error.value) {
 } else {
   console.warn("Data is not in the expected format or is missing:", data.value);
 }
+
+// definePageMeta({
+//   layout: "games",
+// });
 </script>
 
 <style scoped></style>
