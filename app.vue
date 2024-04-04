@@ -4,7 +4,6 @@
   >
     <TopNav />
     <SideNav />
-    <HeroImage />
     <NuxtPage></NuxtPage>
   </div>
 </template>
