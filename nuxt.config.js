@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-swiper",
     "@nuxt/image",
+    "@nuxtjs/supabase",
   ],
   runtimeConfig: {
     public: {

@@ -8,7 +8,7 @@
     <NuxtLink
       ><Icon name="heroicons:shopping-bag" size="24" class=""></Icon
     ></NuxtLink>
-    <NuxtLink>
+    <NuxtLink to="/account">
       <Icon
         name="heroicons:arrow-right-end-on-rectangle-20-solid"
         size="24"
