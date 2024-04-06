@@ -3,7 +3,7 @@
     <h1 class="text-3xl text-bold text-center p-6">Trending Now</h1>
     <div class="grid grid-cols-4 gap-4">
       <div v-for="game in results" :key="game.id">
-        <NuxtLink :to="`/games/${game.id}`" class="">
+        <NuxtLink :to="`/games/${game.slug}`" class="">
           <img
             :src="game.background_image"
             alt=""
@@ -20,7 +20,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMES_API_URL}/games?key=${runtimeConfig.public.GAMES_API_KEY}`
+  `${runtimeConfig.public.GAMES_API_URL}/games?key=${runtimeConfig.public.GAMES_API_KEY}&page_size=20&dates=2024-01-01,2024-04-15&ordering=-rating`
 );
 let results = [];
 

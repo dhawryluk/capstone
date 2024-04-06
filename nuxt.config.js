@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     public: {
       GAMES_API_URL: process.env.GAMES_API_URL,
       GAMES_API_KEY: process.env.GAMES_API_KEY,
+      IGDB_URL: process.env.IGDB_URL,
+      IGDB_CLIENT: process.env.IGDB_CLIENT,
+      IGDB_AUTHORIZATION: process.env.IGDB_AUTHORIZATION,
     },
   },
   colorMode: {
