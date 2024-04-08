@@ -1,6 +1,6 @@
 <template>
   <container
-    class="w-5/6 h-[600px] m-auto pt-8 grid grid-cols-3 gap-4 grid-rows-3"
+    class="w-5/6 h-[600px] ml-auto pt-14 grid grid-cols-3 gap-4 grid-rows-3"
   >
     <div class="grid col-span-2 row-span-3 bg-secondary p-4 rounded-lg">
       <div

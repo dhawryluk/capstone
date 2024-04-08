@@ -13,9 +13,26 @@
         and stay updated on the latest gaming news and releases.
       </p>
     </div>
+    <button onclick="alert('Testing')">Click me</button>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+
+const user = useSupabaseUser();
+const client = useSupabaseClient();
+const router = useRouter();
+
+
+watch(
+  user,
+  () => {
+    if (!user.value) {
+      return navigateTo("/login");
+    }
+  },
+  { immediate: true }
+);
+</script>
 
 <style scoped></style>

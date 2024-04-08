@@ -2,20 +2,23 @@
   <div
     class="absolute top-0 right-4 flex justify-end gap-12 text-accent1 dark:text-accent2 p-4"
   >
-    <NuxtLink
-      ><Icon name="heroicons:chat-bubble-oval-left" size="24" class=""></Icon
-    ></NuxtLink>
-    <NuxtLink
-      ><Icon name="heroicons:shopping-bag" size="24" class=""></Icon
-    ></NuxtLink>
-    <NuxtLink to="/account">
+    <img
+      v-if="src"
+      :src="src"
+      alt="Avatar"
+      class="avatar image w-36 h-36 rounded-full mb-8"
+    />
+    <NuxtLink to="/account"
+      ><h3 class="userEmail">{{ user.email }}</h3></NuxtLink
+    >
+    <NuxtLink to="/login">
       <Icon
         name="heroicons:arrow-right-end-on-rectangle-20-solid"
         size="24"
         class=""
       ></Icon
     ></NuxtLink>
-    <NuxtLink @click="changeColor">
+    <NuxtLink @click="changeColor" class="cursor-pointer">
       <ColorScheme placeholder="...">
         <Icon
           v-if="colorMode.value === 'dark'"
@@ -35,9 +38,21 @@
 </template>
 
 <script setup>
+const user = useSupabaseUser();
+
+watch(
+  user,
+  () => {
+    if (!user.value) {
+      return navigateTo("/login");
+    }
+  },
+  { immediate: true }
+);
+
 const colorMode = useColorMode();
 const changeColor = () =>
   (colorMode.preference = colorMode.value === "light" ? "dark" : "light");
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

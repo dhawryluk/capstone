@@ -1,5 +1,5 @@
 <template>
-  <div class="w-5/6 m-auto p-6">
+  <div class="w-5/6 ml-auto p-6">
     <h1 class="text-3xl text-bold text-center p-6">Trending Now</h1>
     <div class="grid grid-cols-4 gap-4">
       <div v-for="game in results" :key="game.id">

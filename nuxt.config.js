@@ -9,6 +9,12 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/supabase",
   ],
+  supabase: {
+    // redirect: false,
+    redirectOptions: {
+      exclude: ["/games", "/about", "/news", "/"],
+    },
+  },
   runtimeConfig: {
     public: {
       GAMES_API_URL: process.env.GAMES_API_URL,
@@ -16,6 +22,8 @@ export default defineNuxtConfig({
       IGDB_URL: process.env.IGDB_URL,
       IGDB_CLIENT: process.env.IGDB_CLIENT,
       IGDB_AUTHORIZATION: process.env.IGDB_AUTHORIZATION,
+      SUPABASE_URL: process.env.SUPABASE_URL,
+      SUPABASE_KEY: process.env.SUPABASE_KEY,
     },
   },
   colorMode: {
