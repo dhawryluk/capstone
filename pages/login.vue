@@ -1,75 +1,10 @@
+<script setup>
+const user = useSupabaseUser();
+</script>
+
 <template>
-  <div
-    class="p-14 w-full h-screen text-darkColor dark:text-lightColor font-sans"
-  >
-    <div class="flex flex-col w-1/3 m-auto">
-      <h1 class="text-2xl m-2 font-serif uppercase">Sign up or Login</h1>
-      <form @submit.prevent="signIn">
-        <div class="flex p-2">
-          <label for="email" class="w-48 m-2 uppercase">Email:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          />
-          <div>{{ email }}</div>
-        </div>
-        <div class="flex p-2">
-          <label for="password" class="w-48 m-2 uppercase">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary self-end"
-          />
-          <div>{{ password }}</div>
-        </div>
-      </form>
-      <div class="flex justify-end gap-4 pt-4 mr-2">
-        <button class="bg-secondary p-2 rounded-lg" @click="signIn">
-          Sign In
-        </button>
-        <button class="bg-secondary p-2 rounded-lg" @click="signUp">
-          Sign Up
-        </button>
-      </div>
-    </div>
+  <div class="container">
+    <Account v-if="user" />
+    <Auth v-else />
   </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-const supabase = useSupabaseClient();
-const email = ref("");
-const password = ref("");
-
-// Sign in info
-async function signIn() {
-  try {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email.value,
-      password: password.value,
-    });
-    if (error) throw error;
-    router.push("/");
-  } catch (error) {
-    console.error(`Login Error: ${error}`);
-  }
-}
-
-// Sign up info
-async function signUp() {
-  try {
-    const { data, error } = await supabase.auth.signUp({
-      email: email.value,
-      password: password.value,
-    });
-    if (error) {
-      throw error;
-    }
-  } catch (error) {
-    console.error(`Sign Up Error: ${error}`);
-  }
-}
-</script>

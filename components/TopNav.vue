@@ -2,9 +2,9 @@
   <div
     class="absolute top-0 right-4 flex justify-end gap-12 text-accent1 dark:text-accent2 p-4"
   >
-    <!-- <NuxtLink to="/account"
-      ><h3 class="userEmail">{{ user.email }}</h3></NuxtLink
-    > -->
+    <NuxtLink v-if="user" to="/account">
+      <h3 class="username">{{ user.email }}</h3>
+    </NuxtLink>
     <NuxtLink to="/login">
       <Icon
         name="heroicons:arrow-right-end-on-rectangle-20-solid"
@@ -33,16 +33,17 @@
 
 <script setup>
 const user = useSupabaseUser();
+const client = useSupabaseClient();
 
-// watch(
-//   user,
-//   () => {
-//     if (!user.value) {
-//       return navigateTo("/login");
-//     }
-//   },
-//   { immediate: true }
-// );
+watch(
+  user,
+  () => {
+    if (!user.value) {
+      return navigateTo("/");
+    }
+  },
+  { immediate: true }
+);
 
 const colorMode = useColorMode();
 const changeColor = () =>

@@ -1,51 +1,49 @@
 <template>
   <div class="h-screen p-14 text-darkColor dark:text-lightColor font-sans">
-  <form class="form-widget" @submit.prevent="updateProfile">
-    <Avatar v-model:path="avatar_path" @upload="updateProfile" />
-    <div>
-      <label
-        for="email"
-        class="block mt-2 font-serif uppercase"
-        >Email</label
-      >
-      <input
-        id="email"
-        type="text"
-        :value="user.email"
-        class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-        disabled
-      />
-    </div>
-    <div>
-      <label
-        for="username"
-        class="block mt-2 font-serif uppercase"
-        >User Name</label
-      >
-      <input
-        id="username"
-        type="text"
-        v-model="username"
-        class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-      />
-    </div>
+    <form class="form-widget" @submit.prevent="updateProfile">
+      <Avatar v-model:path="avatar_path" @upload="updateProfile" />
+      <div>
+        <label for="email" class="block mt-2 font-serif uppercase">Email</label>
+        <input
+          id="email"
+          type="text"
+          :value="user.email"
+          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          disabled
+        />
+      </div>
+      <div>
+        <label for="username" class="block mt-2 font-serif uppercase"
+          >User Name</label
+        >
+        <input
+          id="username"
+          type="text"
+          v-model="username"
+          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+        />
+      </div>
 
-    <div>
-      <input
-        type="submit"
-        class="button primary block"
-        :value="loading ? 'Loading ...' : 'Update'"
-        :disabled="loading"
-      />
-    </div>
+      <div>
+        <input
+          type="submit"
+          class="button primary block"
+          :value="loading ? 'Loading ...' : 'Update'"
+          :disabled="loading"
+        />
+      </div>
 
-    <div>
-      <button class="bg-secondary p-2 rounded-lg" @click="signOut" :disabled="loading">
-        Sign Out
-      </button>
-    </div>
-  </form>
-</div>
+      <div>
+        <button
+          class="bg-secondary p-2 rounded-lg"
+          @click="signOut"
+          :disabled="loading"
+        >
+          Sign Out
+        </button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script setup>

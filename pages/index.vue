@@ -1,5 +1,5 @@
 <template>
-  <div class="relative text-center">
+  <div class="text-center">
     <HomeHero />
     <div class="w-full">
       <h1 class="text-6xl font-bolder text-center pt-10 pb-4">
@@ -13,26 +13,9 @@
         and stay updated on the latest gaming news and releases.
       </p>
     </div>
-    <button onclick="alert('Testing')">Click me</button>
   </div>
 </template>
 
-<script setup>
-
-const user = useSupabaseUser();
-const client = useSupabaseClient();
-const router = useRouter();
-
-
-// watch(
-//   user,
-//   () => {
-//     if (!user.value) {
-//       return navigateTo("/login");
-//     }
-//   },
-//   { immediate: true }
-// );
-</script>
+<script setup></script>
 
 <style scoped></style>

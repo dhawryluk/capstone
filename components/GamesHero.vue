@@ -1,7 +1,5 @@
 <template>
-  <container
-    class="w-5/6 h-[600px] ml-auto pt-14 grid grid-cols-3 gap-4 grid-rows-3"
-  >
+  <div class="w-5/6 h-[600px] ml-auto pt-14 grid grid-cols-3 gap-4 grid-rows-3">
     <div class="grid col-span-2 row-span-3 bg-secondary p-4 rounded-lg">
       <div
         class="bg-[url('/assets/images/scarlet.png')] bg-cover rounded-lg"
@@ -22,7 +20,7 @@
         class="bg-[url('/assets/images/redHood.png')] bg-cover rounded-lg"
       ></div>
     </div>
-  </container>
+  </div>
 </template>
 
 <script setup></script>

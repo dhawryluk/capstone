@@ -28,7 +28,6 @@
       </div>
     </div>
   </div>
-  <!-- <AppButton :id="game." /> -->
 </template>
 <script setup>
 const route = useRoute();
@@ -46,10 +45,6 @@ if (error.value) {
 } else {
   console.warn("Data is not in the expected format or is missing:", data.value);
 }
-
-// definePageMeta({
-//   layout: "games",
-// });
 </script>
 
 <style scoped></style>
