@@ -12,13 +12,13 @@
 const user = useSupabaseUser();
 const client = useSupabaseClient();
 
-watch(
-  user,
-  () => {
-    if (!user.value) {
-      return navigateTo("/");
-    }
-  },
-  { immediate: true }
-);
+// watch(
+//   user,
+//   () => {
+//     if (!user.value) {
+//       return navigateTo("/");
+//     }
+//   },
+//   { immediate: true }
+// );
 </script>

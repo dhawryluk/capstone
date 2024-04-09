@@ -24,15 +24,15 @@ const client = useSupabaseClient();
 const router = useRouter();
 
 
-watch(
-  user,
-  () => {
-    if (!user.value) {
-      return navigateTo("/login");
-    }
-  },
-  { immediate: true }
-);
+// watch(
+//   user,
+//   () => {
+//     if (!user.value) {
+//       return navigateTo("/login");
+//     }
+//   },
+//   { immediate: true }
+// );
 </script>
 
 <style scoped></style>

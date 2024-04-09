@@ -10,10 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
   ],
   supabase: {
-    // redirect: false,
-    redirectOptions: {
-      exclude: ["/games", "/about", "/news", "/"],
-    },
+    redirect: false,
   },
   runtimeConfig: {
     public: {
