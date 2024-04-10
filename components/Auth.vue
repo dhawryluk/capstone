@@ -2,7 +2,7 @@
   <div
     class="p-14 w-full h-screen text-darkColor dark:text-lightColor font-sans"
   >
-    <div class="flex flex-col w-1/3 m-auto">
+    <div class="">
       <h1 class="text-2xl m-2 font-serif uppercase">Sign up or Login</h1>
       <form @submit.prevent="signIn">
         <div class="flex p-2">

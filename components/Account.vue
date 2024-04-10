@@ -27,15 +27,12 @@
       <div>
         <input
           type="submit"
-          class="button primary block"
+          class="w-30 mt-4 mr-4 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           :value="loading ? 'Loading ...' : 'Update'"
           :disabled="loading"
         />
-      </div>
-
-      <div>
         <button
-          class="bg-secondary p-2 rounded-lg"
+          class="w-30 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           @click="signOut"
           :disabled="loading"
         >

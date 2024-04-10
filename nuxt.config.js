@@ -7,9 +7,6 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/supabase",
   ],
-  supabase: {
-    redirect: false,
-  },
   runtimeConfig: {
     public: {
       GAMES_API_URL: process.env.GAMES_API_URL,

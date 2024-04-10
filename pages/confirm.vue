@@ -7,7 +7,6 @@
 
 <script setup>
 const user = useSupabaseUser();
-const client = useSupabaseClient();
 
 watch(
   user,

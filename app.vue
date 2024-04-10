@@ -1,4 +1,5 @@
 <template>
+  <NuxtLoadingIndicator />
   <div
     class="bg-lightColor dark:bg-darkColor text-darkColor dark:text-lightColor"
   >

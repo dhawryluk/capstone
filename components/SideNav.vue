@@ -1,6 +1,7 @@
 <template>
+  <div class="absolute top-14 flex flex-col content-between bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2">
   <div
-    class="absolute top-14 flex flex-col gap-12 p-4 bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2"
+     class="flex flex-col gap-12 py-4 mx-4 items-center md:items-start min-h-full"
   >
     <NuxtLink to="/"
       ><Icon name="heroicons:home-solid" size="36" class=""></Icon
@@ -24,14 +25,31 @@
         >Gaming News</span
       ></NuxtLink
     >
-    <h2 class="text-lightColor pl-2">News Feed</h2>
-    <div v-for="article in articles" key:="article.id" class="px-2 shadow-lg hidden md:inline-block line-clamp-2">
-      <p>{{ article.deck }}</p>
+    <div class="hidden md:inline-block">
+      <h2 class="text-lightColor pl-2 text-xl">News Feed</h2>
+        <div v-for="article in articles" key:="article.id" class="my-4 shadow-lg line-clamp-2">
+        <p>{{ article.deck }}</p>
+        </div>
+    </div>
+    <div>
+      <h2 class="text-lightColor pl-2 text-xl hidden md:inline-block">Follow our Socials</h2>
+      <div class="flex flex-col gap-12 my-4">
+    <NuxtLink to="https://twitter.com/"
+      ><Icon name="icon-park-twotone:big-x" size="36" class=""></Icon
+      >
+      </NuxtLink>
+      <NuxtLink to="https://www.facebook.com/"
+      ><Icon name="icon-park-twotone:facebook" size="36" class=""></Icon
+      >
+      </NuxtLink>
+      <NuxtLink to="https://www.instagram.com/"
+      ><Icon name="icon-park-twotone:instagram" size="36" class=""></Icon
+      >
+      </NuxtLink>
+      </div>
     </div>
   </div>
-  <div>
-  
-  </div>
+</div>
 </template>
 
 <script setup>

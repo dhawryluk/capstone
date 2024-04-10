@@ -1,7 +1,7 @@
 <template>
-  <div class="w-5/6 ml-auto p-6">
+  <div class="w-9/12 mt-8 mx-80">
     <h1 class="text-3xl text-bold text-center p-6">Trending Now</h1>
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-3 w-full m-auto">
       <div v-for="game in results" :key="game.id">
         <NuxtLink :to="`/games/${game.slug}`" class="">
           <img
@@ -20,7 +20,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMES_API_URL}/games?key=${runtimeConfig.public.GAMES_API_KEY}`
+  `${runtimeConfig.public.GAMES_API_URL}/games?key=${runtimeConfig.public.GAMES_API_KEY}&page_size=18&dates=2024-01-01,2024-04-15`
 );
 let results = [];
 
@@ -31,10 +31,6 @@ if (error.value) {
 } else {
   console.warn("Data is not in the expected format or is missing:", data.value);
 }
-
-// definePageMeta({
-//   layout: "games",
-// });
 </script>
 
 <style scoped></style>
