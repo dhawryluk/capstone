@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <h1>This is the News Page</h1>
-    <div v-for="article in articles" key:="article.id">
-    {{ article.title }}
-    {{ article.authors }}
-    {{ article.body }}
+  <div class="h-full w-2/3 m-auto pt-14">
+    <h1 class="text-3xl my-4 p-4">World Gaming News</h1>
+    <div v-for="article in articles" key:="article.id" class="p-4">
+    <h2 class="text-2xl py-4">{{ article.title }}</h2>
+    <div v-html="article.body" class="flex flex-wrap font-serif"></div>
+    <p class="py-4 flex justify-between">Author(s): {{ article.authors }}<span class="italic">{{ article.publish_date }}</span></p>
+    
   </div>
   </div>
 </template>
