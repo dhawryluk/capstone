@@ -1,21 +1,25 @@
 <template>
-  <div class="w-9/12 h-[600px] mx-80 mt-14 grid grid-cols-3 gap-4 grid-rows-3">
-    <div class="grid col-span-2 row-span-3 bg-secondary p-4 rounded-lg">
+  <div
+    class="w-4/5 ml-auto md:w-9/12 h-[600px] md:mx-80 mt-14 grid md:grid-cols-3 gap-4 grid-rows-6 md:grid-rows-3"
+  >
+    <div
+      class="grid md:col-span-2 row-span-3 md:row-span-3 bg-secondary p-2 md:p-4 rounded-lg"
+    >
       <div
         class="bg-[url('/assets/images/scarlet.png')] bg-cover bg-center rounded-lg"
       ></div>
     </div>
-    <div class="grid row-span-1 bg-secondary p-4 rounded-lg">
+    <div class="grid row-span-1 bg-secondary p-2 md:p-4 rounded-lg">
       <div
         class="bg-[url('/assets/images/cloak.jpg')] bg-cover bg-center rounded-lg"
       ></div>
     </div>
-    <div class="grid row-span-1 bg-secondary p-4 rounded-lg">
+    <div class="grid row-span-1 bg-secondary p-2 md:p-4 rounded-lg">
       <div
         class="bg-[url('/assets/images/fireGirl.png')] bg-cover bg-center rounded-lg"
       ></div>
     </div>
-    <div class="grid row-span-1 bg-secondary p-4 rounded-lg">
+    <div class="grid row-span-1 bg-secondary p-2 md:p-4 rounded-lg">
       <div
         class="bg-[url('/assets/images/redHood.png')] bg-cover rounded-lg"
       ></div>
