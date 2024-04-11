@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid w-3/4 ml-auto md:w-9/12 h-[600px] mt-14 md:mx-80 bg-secondary rounded-lg"
+    class="grid w-3/4 ml-auto md:w-9/12 h-[600px] mt-14 md:mr-0 bg-secondary rounded-lg"
   >
     <div
       class="bg-[url('/assets/images/soldier.jpg')] bg-cover bg-center rounded-lg m-4"
