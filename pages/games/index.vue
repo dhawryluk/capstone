@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="w-full bg-[url('/assets/images/wave.jpg')] bg-cover bg-center">
     <GamesHero />
     <TrendingCard />
   </div>
