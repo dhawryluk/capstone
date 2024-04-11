@@ -1,10 +1,12 @@
 <template>
   <div class="text-center">
     <HomeHero />
-    <div class="grid w-9/12 mt-8 mx-80">
-      <h1 class="text-6xl font-bolder pt-10 pb-4">Welcome to 4PLAY</h1>
+    <div class="grid w-3/4 m-auto md:w-9/12 mt-8 md:mx-80">
+      <h1 class="text-4xl md:text-6xl font-bolder pt-10 pb-4">
+        Welcome to 4PLAY
+      </h1>
       <h2 class="text-2xl font-serif">Where Gamers Unite</h2>
-      <p class="font-serif text-xl pt-8 text-justify">
+      <p class="font-serif text-lg md:text-xl pt-8 text-justify">
         Welcome to 4Play, the ultimate gaming community where players unite to
         celebrate their love for gaming. Designed to be the Facebook of gaming,
         4Play is the go-to platform for gamers to connect, share experiences,

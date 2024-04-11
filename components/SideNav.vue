@@ -7,7 +7,7 @@
       ><Icon name="heroicons:home-solid" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block">Home</span></NuxtLink
     >
-    <NuxtLink to="/"
+    <NuxtLink to="/account"
       ><Icon name="prime:objects-column" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block"
         >Dashboard</span

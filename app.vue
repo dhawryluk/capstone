@@ -6,6 +6,7 @@
     <TopNav />
     <SideNav />
     <NuxtPage></NuxtPage>
+    <Footer />
   </div>
 </template>
 
