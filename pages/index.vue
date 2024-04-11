@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <HomeHero />
-    <div class="grid w-3/4 m-auto md:w-9/12 mt-8 md:mx-80">
+    <div class="grid w-3/4 m-auto">
       <h1 class="text-4xl md:text-6xl font-bolder pt-10 pb-4">
         Welcome to 4PLAY
       </h1>

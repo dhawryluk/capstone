@@ -1,13 +1,13 @@
 <template>
-  <div class="w-full md:w-9/12 mt-8 md:mx-80">
+  <div class="w-full m-auto mt-8">
     <h1 class="text-3xl text-bold text-center p-6">Trending Now</h1>
-    <div class="grid md:grid-cols-3 justify-center">
+    <div class="grid md:grid-cols-3 justify-center gap-4">
       <div v-for="game in results" :key="game.id">
         <NuxtLink :to="`/games/${game.slug}`" class="">
           <img
             :src="game.background_image"
             alt="gaming content"
-            class="h-[200px] w-[370px] rounded-tl-3xl hover:scale-105 hover:bg-black hover:opacity-50 duration-300 ease-in-out"
+            class="rounded-tl-3xl hover:scale-105 hover:bg-black hover:opacity-50 duration-300 ease-in-out"
           />
         </NuxtLink>
         <h1 class="p-2">{{ game.name }}</h1>

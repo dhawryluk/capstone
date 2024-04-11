@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute top-14 flex flex-col content-between bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2">
+  <div class="mt-14 flex flex-col content-between bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2">
   <div
      class="flex flex-col gap-12 py-4 mx-4 items-center md:items-start min-h-full"
   >
