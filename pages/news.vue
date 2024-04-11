@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-2/3 m-auto pt-14">
+  <div class="h-full flex flex-wrap m-auto pt-14">
     <h1 class="text-3xl my-4 p-4">World Gaming News</h1>
     <div v-for="article in articles" key:="article.id" class="p-4">
     <h2 class="text-2xl py-4">{{ article.title }}</h2>

@@ -34,16 +34,6 @@
 <script setup>
 const user = useSupabaseUser();
 
-watch(
-  user,
-  () => {
-    if (!user.value) {
-      return navigateTo("/");
-    }
-  },
-  { immediate: true }
-);
-
 const colorMode = useColorMode();
 const changeColor = () =>
   (colorMode.preference = colorMode.value === "light" ? "dark" : "light");
