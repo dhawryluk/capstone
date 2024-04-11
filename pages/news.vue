@@ -1,12 +1,14 @@
 <template>
-  <div class="h-full flex flex-wrap m-auto pt-14">
+  <div class="max-w-full m-auto pt-14">
     <h1 class="text-3xl my-4 p-4">World Gaming News</h1>
     <div v-for="article in articles" key:="article.id" class="p-4">
     <h2 class="text-2xl py-4">{{ article.title }}</h2>
-    <div v-html="article.body" class="flex flex-wrap font-serif"></div>
-    <p class="py-4 flex justify-between">Author(s): {{ article.authors }}<span class="italic">{{ article.publish_date }}</span></p>
-    
+    <div v-html="article.body" class="font-serif"></div>
+    <div class="flex justify-between py-4">
+    <p class="">Author(s): {{ article.authors }}</p>
+    <p class="italic">{{ article.publish_date }}</p>
   </div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +16,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-01|2024-04-09&limit=10&format=json`
+  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-11&limit=10&sort=publish_date:desc&format=json`
 );
 let articles = [];
 
