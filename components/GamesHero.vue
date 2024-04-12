@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="h-[600px] mt-14 grid md:grid-cols-3 gap-4 grid-rows-6 md:grid-rows-3"
-  >
+  <div class="h-[600px] grid md:grid-cols-3 gap-4 grid-rows-6 md:grid-rows-3">
     <div
       class="grid md:col-span-2 row-span-3 md:row-span-3 bg-secondary p-2 md:p-4 rounded-lg"
     >

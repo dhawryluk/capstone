@@ -1,5 +1,5 @@
 <template>
-  <div class="p-14 text-darkColor dark:text-lightColor font-sans">
+  <div class="p-14 w-full text-darkColor dark:text-lightColor font-sans">
     <form class="form-widget" @submit.prevent="updateProfile">
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
       <div>
@@ -34,7 +34,6 @@
         <button
           class="w-30 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           @click="signOut"
-          :disabled="loading"
         >
           Sign Out
         </button>
@@ -50,6 +49,7 @@ const loading = ref(true);
 const username = ref("");
 const website = ref("");
 const avatar_path = ref("");
+const router = useRouter();
 
 loading.value = true;
 
@@ -97,6 +97,7 @@ async function signOut() {
   try {
     loading.value = true;
     const { error } = await supabase.auth.signOut();
+    router.push("/login");
     if (error) throw error;
   } catch (error) {
     alert(error.message);

@@ -20,6 +20,9 @@ export default defineNuxtConfig({
       GAMESPOT_API_KEY: process.env.GAMESPOT_API_KEY,
     },
   },
+  supabase: {
+    redirect: false,
+  },
   colorMode: {
     preference: "dark",
     fallback: "dark",

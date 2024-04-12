@@ -10,7 +10,7 @@
     <NuxtLink to="/account"
       ><Icon name="prime:objects-column" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block"
-        >Dashboard</span
+        >My Account</span
       ></NuxtLink
     >
     <NuxtLink to="/games"
