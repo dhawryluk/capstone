@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen p-14 text-darkColor dark:text-lightColor font-sans">
+  <div class="p-14 text-darkColor dark:text-lightColor font-sans">
     <form class="form-widget" @submit.prevent="updateProfile">
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
       <div>
@@ -8,7 +8,7 @@
           id="email"
           type="text"
           :value="user.email"
-          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          class="w-1/3 rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           disabled
         />
       </div>
@@ -20,7 +20,7 @@
           id="username"
           type="text"
           v-model="username"
-          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          class="w-1/3 rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
         />
       </div>
 
@@ -45,14 +45,13 @@
 
 <script setup>
 const supabase = useSupabaseClient();
-
+const user = useSupabaseUser();
 const loading = ref(true);
 const username = ref("");
 const website = ref("");
 const avatar_path = ref("");
 
 loading.value = true;
-const user = useSupabaseUser();
 
 const { data } = await supabase
   .from("profiles")
@@ -93,6 +92,7 @@ async function updateProfile() {
   }
 }
 
+// Sign out Function
 async function signOut() {
   try {
     loading.value = true;
