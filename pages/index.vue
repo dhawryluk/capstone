@@ -1,7 +1,7 @@
 <template>
-  <div class="text-center">
+  <div class="">
     <HomeHero />
-    <div class="grid w-3/4 m-auto">
+    <div class="grid w-3/4 m-auto text-center">
       <h1 class="text-4xl md:text-6xl font-bolder pt-10 pb-4">
         Welcome to 4PLAY
       </h1>
@@ -23,6 +23,7 @@
           <img :src="item" class="w-full" draggable="false" />
         </UCarousel>
       </div>
+      <ComingSoon />
     </div>
   </div>
 </template>

@@ -33,8 +33,12 @@
       <div
         class="flex flex-col md:flex-row self-end gap-4 md:gap-12 p-4 text-md md:text-2xl text-accent2"
       >
-        <NuxtLink to="/about">About 4Play</NuxtLink>
-        <NuxtLink to="/contact">Contact Us</NuxtLink>
+        <NuxtLink to="/about" class="text-accent1 dark:text-accent2"
+          >About 4Play</NuxtLink
+        >
+        <NuxtLink to="/contact" class="text-accent1 dark:text-accent2"
+          >Contact Us</NuxtLink
+        >
       </div>
     </div>
   </div>

@@ -9,7 +9,6 @@
             type="email"
             name="email"
             id="email"
-            v-model="email"
             class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           />
           <div>{{ email }}</div>
@@ -20,7 +19,6 @@
             type="password"
             name="password"
             id="password"
-            v-model="password"
             class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary self-end"
           />
           <div>{{ password }}</div>

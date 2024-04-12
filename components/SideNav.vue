@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-14 flex flex-col content-between bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2">
+  <div class="flex flex-col content-between bg-secondary w-16 md:w-2/12 rounded-lg text-accent1 dark:text-accent2">
   <div
      class="flex flex-col gap-12 py-4 mx-4 items-center md:items-start min-h-full"
   >
@@ -25,12 +25,12 @@
         >Gaming News</span
       ></NuxtLink
     >
-    <div class="hidden md:inline-block">
+    <NuxtLink to="/news" class="hidden md:inline-block">
       <h2 class="text-lightColor pl-2 text-xl">News Feed</h2>
         <div v-for="article in articles" key:="article.id" class="my-4 shadow-lg line-clamp-2">
         <p>{{ article.deck }}</p>
         </div>
-    </div>
+    </NuxtLink>
     <div>
       <h2 class="text-lightColor pl-2 text-xl hidden md:inline-block">Follow our Socials</h2>
       <div class="flex flex-col gap-12 my-4">
