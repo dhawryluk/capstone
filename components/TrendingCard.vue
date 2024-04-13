@@ -7,7 +7,7 @@
           <img
             :src="game.background_image"
             alt="gaming content"
-            class="rounded-tl-3xl hover:scale-105 hover:bg-black hover:opacity-50 duration-300 ease-in-out"
+            class="h-[230px] w-full rounded-tl-3xl hover:scale-105 hover:bg-black hover:opacity-50 duration-300 ease-in-out"
           />
         </NuxtLink>
         <h1 class="p-2">{{ game.name }}</h1>

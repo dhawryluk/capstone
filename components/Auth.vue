@@ -1,5 +1,7 @@
 <template>
-  <div class="p-14 w-full text-darkColor dark:text-lightColor font-sans">
+  <div
+    class="w-1/2 mx-auto pt-14 text-darkColor dark:text-lightColor font-sans"
+  >
     <div class="">
       <h1 class="text-2xl m-2 font-serif uppercase">Sign up or Login</h1>
       <form @submit.prevent="signIn">

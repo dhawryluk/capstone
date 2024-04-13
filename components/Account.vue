@@ -1,5 +1,7 @@
 <template>
-  <div class="p-14 w-full text-darkColor dark:text-lightColor font-sans">
+  <div
+    class="w-1/2 mx-auto pt-14 text-darkColor dark:text-lightColor font-sans"
+  >
     <form class="form-widget" @submit.prevent="updateProfile">
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
       <div>
@@ -8,7 +10,7 @@
           id="email"
           type="text"
           :value="user.email"
-          class="w-1/3 rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           disabled
         />
       </div>
@@ -20,23 +22,18 @@
           id="username"
           type="text"
           v-model="username"
-          class="w-1/3 rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
         />
       </div>
 
-      <div>
+      <div class="flex gap-4 mt-4">
         <input
           type="submit"
-          class="w-30 mt-4 mr-4 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
           :value="loading ? 'Loading ...' : 'Update'"
           :disabled="loading"
         />
-        <button
-          class="w-30 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          @click="signOut"
-        >
-          Sign Out
-        </button>
+        <PrimaryButton class="w-24" @click="signOut">Sign Out</PrimaryButton>
       </div>
     </form>
   </div>

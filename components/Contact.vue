@@ -34,6 +34,31 @@
       ></textarea>
       <PrimaryButton type="submit"> Send Message </PrimaryButton>
     </form>
+    <div>
+      <UModal v-model="isOpen" prevent-close>
+        <UCard
+          :ui="{
+            ring: '',
+            divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+          }"
+        >
+          <div class="flex items-center justify-between">
+            <h3
+              class="text-base font-semibold leading-6 text-darkColor dark:text-lightColor"
+            >
+              Your Message has been Sent!
+            </h3>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-x-mark-20-solid"
+              class="-my-1"
+              @click="isClosed"
+            />
+          </div>
+        </UCard>
+      </UModal>
+    </div>
   </div>
 </template>
 
@@ -43,9 +68,9 @@ const yourName = ref("");
 const email = ref("");
 const message = ref("");
 const router = useRouter();
+let isOpen = ref(false);
 
 async function sendEmail() {
-  console.log(yourName, email, message, "message");
   try {
     const { data, error } = await supabase
       .from("contact-page")
@@ -53,11 +78,14 @@ async function sendEmail() {
         { name: yourName.value, email: email.value, message: message.value },
       ])
       .select();
-    console.log(data, "data");
     if (error) throw error;
-    router.push("/");
+    isOpen.value = true;
   } catch (error) {
     console.error(`Error sending message: ${error}`);
   }
+}
+
+async function isClosed() {
+  router.push("/");
 }
 </script>

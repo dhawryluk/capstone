@@ -22,10 +22,8 @@ let articles = [];
 
 if (error.value) {
   console.error("API request failed:", error.value);
-} else if (data.value?.results) {
-  articles = data.value.results;
 } else {
-  console.warn("Data is not in the expected format or is missing:", data.value);
+  articles = data.value.results;
 }
 
 

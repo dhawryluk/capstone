@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full m-auto mt-8">
+  <div class="w-full m-auto">
     <h1 class="text-3xl text-bold text-center p-6">Coming Soon</h1>
     <div class="grid md:grid-cols-2 justify-center gap-4">
       <div
@@ -7,11 +7,14 @@
         :key="game.id"
         class="bg-secondary rounded-t-3xl"
       >
-        <NuxtLink :to="`/games/${game.slug}`" class="">
+        <NuxtLink
+          :to="`/games/${game.slug}`"
+          class="hover:bg-black hover:opacity-50 duration-300 ease-in-out"
+        >
           <img
             :src="game.background_image"
             alt="gaming content"
-            class="rounded-t-3xl hover:scale-105 hover:bg-black hover:opacity-50 duration-300 ease-in-out"
+            class="rounded-t-3xl h-[280px] w-full"
           />
         </NuxtLink>
         <h1 class="p-2">{{ game.name }}</h1>

@@ -56,7 +56,7 @@
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-01|2024-04-09&limit=10&format=json`
+  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-01|2024-04-11&limit=10&format=json`
 );
 let articles = [];
 
