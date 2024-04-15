@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full m-auto">
+  <div class="w-5/6 m-auto">
     <h1 class="text-3xl text-bold text-center p-6">Coming Soon</h1>
     <div class="grid md:grid-cols-2 justify-center gap-4">
       <div

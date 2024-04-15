@@ -81,6 +81,7 @@ const comments = ref("");
 const router = useRouter();
 let isOpen = ref(false);
 
+// Post new comment
 async function postComment() {
   try {
     const { error } = await supabase
@@ -93,10 +94,12 @@ async function postComment() {
     console.error(`Error sending message: ${error}`);
   }
 }
+// Closing Pop-up
 async function isClosed() {
   router.push("/");
 }
 
+// Fetching comments
 const { data } = await useFetch(
   `${runtimeConfig.public.SUPABASE_URL}/rest/v1/social_feed?apikey=${runtimeConfig.public.SUPABASE_KEY}`
 );

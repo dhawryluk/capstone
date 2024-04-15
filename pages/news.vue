@@ -13,21 +13,21 @@
 </template>
 
 <script setup>
-// const { articles } = await useFetch('/api/news')
+const data = await useFetch("/api/news");
+const articles = data.data.value.results;
+console.log(data.data);
+// const runtimeConfig = useRuntimeConfig();
 
-const runtimeConfig = useRuntimeConfig();
+// const { data, error } = await useFetch(
+//   `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-20&limit=10&sort=publish_date:desc&format=json`
+// );
+// let articles = [];
 
-const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-20&limit=10&sort=publish_date:desc&format=json`
-);
-let articles = [];
-
-if (error.value) {
-  console.error("API request failed:", error.value);
-} else {
-  articles = data.value.results;
-}
-
+// if (error.value) {
+//   console.error("API request failed:", error.value);
+// } else {
+//   articles = data.value.results;
+// }
 
 // const headers = {
 //   Accept: "application/json",
