@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full m-auto">
+  <div class="">
     <h1 class="text-3xl my-4 p-4">World Gaming News</h1>
     <div v-for="article in articles" key:="article.id" class="p-4">
     <h2 class="text-2xl py-4">{{ article.title }}</h2>
@@ -13,10 +13,12 @@
 </template>
 
 <script setup>
+// const { articles } = await useFetch('/api/news')
+
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
-  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-11&limit=10&sort=publish_date:desc&format=json`
+  `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-20&limit=10&sort=publish_date:desc&format=json`
 );
 let articles = [];
 
@@ -25,10 +27,6 @@ if (error.value) {
 } else {
   articles = data.value.results;
 }
-
-
-
-
 
 
 // const headers = {
