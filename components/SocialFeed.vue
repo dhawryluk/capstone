@@ -57,7 +57,7 @@
         <li
           v-for="(comment, i) in data"
           :key="i"
-          class="bg-secondary my-4 p-4 rounded-lg"
+          class="text-lightColor bg-secondary my-4 p-4 rounded-lg"
         >
           <Icon
             name="heroicons:user-20-solid"
