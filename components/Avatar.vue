@@ -4,7 +4,7 @@
       v-if="src"
       :src="src"
       alt="Avatar"
-      class="avatar image w-36 h-36 rounded-full mb-8"
+      class="avatar image w-36 h-36 rounded-full mb-8 ring-2 dark:ring-accent2 ring-accent1"
     />
     <div
       v-else

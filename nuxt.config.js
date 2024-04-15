@@ -16,6 +16,7 @@ export default defineNuxtConfig({
       IGDB_AUTHORIZATION: process.env.IGDB_AUTHORIZATION,
       SUPABASE_URL: process.env.SUPABASE_URL,
       SUPABASE_KEY: process.env.SUPABASE_KEY,
+      SUPABASE_AUTHORIZATION: process.env.SUPABASE_AUTHORIZATION,
       GAMESPOT_API_URL: process.env.GAMESPOT_API_URL,
       GAMESPOT_API_KEY: process.env.GAMESPOT_API_KEY,
     },

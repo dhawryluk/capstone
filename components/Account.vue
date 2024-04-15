@@ -1,8 +1,8 @@
 <template>
   <div
-    class="w-1/2 mx-auto pt-14 text-darkColor dark:text-lightColor font-sans"
+    class="bg-secondary p-4 rounded-xl md:w-1/2 mx-auto mt-14 text-darkColor dark:text-lightColor font-sans"
   >
-    <form class="form-widget" @submit.prevent="updateProfile">
+    <form class="form-widget text-lightColor" @submit.prevent="updateProfile">
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
       <div>
         <label for="email" class="block mt-2 font-serif uppercase">Email</label>

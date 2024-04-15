@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div>
     <HomeHero />
-    <div class="grid w-3/4 m-auto text-center">
+    <div class="m-auto text-center">
       <h1 class="text-4xl md:text-6xl font-bolder pt-10 pb-4">
         Welcome to 4PLAY
       </h1>
@@ -17,7 +17,7 @@
           v-slot="{ item }"
           :items="items"
           :ui="{ item: 'basis-full' }"
-          class="rounded-lg overflow-hidden pt-14 w-4/5 m-auto h-4/5"
+          class="rounded-lg overflow-hidden pt-14 w-2/3 h-2/3 mx-auto"
           arrows
         >
           <img :src="item" class="w-full" draggable="false" />
@@ -30,10 +30,11 @@
 
 <script setup>
 const items = [
-  "https://images7.alphacoders.com/370/370408.png",
-  "https://images3.alphacoders.com/699/699057.png",
-  "https://images8.alphacoders.com/877/877849.jpg",
-  "https://images7.alphacoders.com/536/536426.png",
-  "https://images5.alphacoders.com/540/540654.jpg",
+  "https://images.alphacoders.com/134/1343705.png",
+  "https://images5.alphacoders.com/134/1349297.png",
+  "https://images6.alphacoders.com/134/1348515.png",
+  "https://images4.alphacoders.com/135/1356322.jpeg",
+  "https://images5.alphacoders.com/133/1337070.jpeg",
+  "https://images6.alphacoders.com/697/697947.jpg",
 ];
 </script>
