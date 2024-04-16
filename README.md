@@ -1,75 +1,28 @@
-# Nuxt 3 Minimal Starter
+## CPNT265 Final Capstone Project
+# Author - Derek Hawryluk
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**NPM resources used**
+- Supabase
+- Nuxt UI
+- Tailwind
+- Google Fonts
 
-## Setup
+**API fetching resourse**
+- Supabase
+- GameStop
+- RAWG
 
-Make sure to install the dependencies:
+**Additional resources**
+*Images:* 
+- https://www.freepik.com/
+- https://alphacoders.com/video-game-wallpapers
 
-```bash
-# npm
-npm install
+*AI:*
+ChatGPT
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+*Docs*
+- Tailwind
+- Nuxt
+- Supabase
+- Vercel
+- w3schools
