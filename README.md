@@ -13,6 +13,7 @@
 - RAWG
 
 **Additional resources**
+
 *Images:* 
 - https://www.freepik.com/
 - https://alphacoders.com/video-game-wallpapers
