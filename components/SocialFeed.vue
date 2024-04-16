@@ -55,7 +55,7 @@
       <h1 class="flex flex-col text-2xl mt-6">Lets Chat</h1>
       <ul>
         <li
-          v-for="(comment, i) in data"
+          v-for="(comment, i) in data.slice().reverse()"
           :key="i"
           class="text-lightColor bg-secondary my-4 p-4 rounded-lg"
         >
@@ -78,7 +78,6 @@ const supabase = useSupabaseClient();
 const runtimeConfig = useRuntimeConfig();
 const username = ref("");
 const comments = ref("");
-const router = useRouter();
 let isOpen = ref(false);
 
 // Post new comment
@@ -96,7 +95,8 @@ async function postComment() {
 }
 // Closing Pop-up
 async function isClosed() {
-  router.push("/");
+  isOpen.value = false;
+  window.location.reload();
 }
 
 // Fetching comments

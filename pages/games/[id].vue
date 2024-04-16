@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col w-2/3 m-auto bg-lightColor text-darkColor rounded-xl text-xl font-bold"
+    class="flex flex-col w-2/3 h-full mx-auto bg-lightColor text-darkColor rounded-xl text-xl font-bold"
   >
     <img :src="game.background_image" alt="" class="bg-cover rounded-t-xl" />
     <div class="text-left mx-6 text-lg">
