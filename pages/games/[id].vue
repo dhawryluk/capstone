@@ -1,6 +1,5 @@
 <template>
   <div
-<<<<<<< HEAD
     class="flex flex-col w-3/4 mx-auto bg-lightColor text-darkColor dark:bg-secondary dark:text-lightColor rounded-xl text-xl p-4"
   >
   <div class="columns-2">
@@ -29,16 +28,6 @@
         >
           {{ genre.name }}
         </span></p>
-=======
-    class="flex flex-col w-2/3 h-full mx-auto bg-lightColor text-darkColor rounded-xl text-xl font-bold"
-  >
-    <img :src="game.background_image" alt="" class="bg-cover rounded-t-xl" />
-    <div class="text-left mx-6 text-lg">
-      <p class="text-2xl font-bold py-4">{{ game.name }}</p>
-      <p class="font-serif">{{ game.description_raw }}</p>
-      <p class="py-2">Release Date: {{ game.released }}</p>
-      <p class="py-2">Rating: {{ game.rating }}</p>
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
       <ul class="">
         Platforms:
         <li
@@ -50,10 +39,7 @@
         </li>
       </ul>
     </div>
-<<<<<<< HEAD
     </div>
-=======
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
   </div>
 </template>
 <script setup>

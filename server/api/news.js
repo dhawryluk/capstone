@@ -1,5 +1,4 @@
 export default defineEventHandler(async () => {
-<<<<<<< HEAD
   try {
     // Get the API URL and key from the environment variables
     const apiUrl = process.env.GAMESPOT_API_URL;
@@ -28,25 +27,4 @@ export default defineEventHandler(async () => {
     console.error("An unexpected error occurred:", error);
     return { articles: [], error: error.message };
   }
-=======
-  let articles = [];
-  let error = null;
-  try {
-    const runtimeConfig = useRuntimeConfig();
-    const data = await fetch(
-      `${runtimeConfig.public.GAMESPOT_API_URL}articles/?api_key=${runtimeConfig.public.GAMESPOT_API_KEY}&filter=publish_date:2024-04-03|2024-04-20&limit=10&sort=publish_date:desc&format=json`
-    );
-    const response = await data.json();
-    // console.log(response);
-    if (data.error) {
-      console.error("API request failed:", data.error);
-      throw error;
-    }
-    return response;
-  } catch (err) {
-    console.error("An unexpected error occurred:", err);
-    error = err;
-  }
-  return { articles, error };
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
 });

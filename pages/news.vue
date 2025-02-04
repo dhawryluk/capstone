@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
     <h1 class="bg-[url('/assets/images/wave.jpg')] bg-cover bg-center text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg">Gaming News</h1>
     
@@ -37,23 +36,11 @@
            target="_blank"
            class="text-accent2 hover:underline">Read full article</a>
       </div>
-=======
-  <div class="">
-    <h1 class="bg-[url('/assets/images/wave.jpg')] bg-cover bg-center text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg">World Gaming News</h1>
-    <div v-for="article in articles" key:="article.id" class="p-4">
-    <h2 class="text-2xl py-4">{{ article.title }}</h2>
-    <div v-html="article.body" class="font-serif"></div>
-    <div class="flex justify-between py-4">
-    <p class="">Author(s): {{ article.authors }}</p>
-    <p class="italic">{{ article.publish_date }}</p>
-  </div>
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
     </div>
   </div>
 </template>
 
 <script setup>
-<<<<<<< HEAD
 import { ref, onMounted } from "vue";
 
 const articles = ref([]);
@@ -68,14 +55,10 @@ const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric"};
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
-=======
-const articles = ref([]);
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
 
 const fetchData = async () => {
   try {
     const response = await $fetch("/api/news");
-<<<<<<< HEAD
 
     const articlesData = response?.results ?? [];
     articles.value = response.results;
@@ -88,11 +71,6 @@ const fetchData = async () => {
     error.value = "Failed to load articles. Please try again later.";
   } finally {
     loading.value = false;
-=======
-    articles.value = response.results;
-  } catch (error) {
-    console.error("Error fetching data:", error);
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
   }
 };
 
@@ -100,10 +78,4 @@ onMounted(() => {
   fetchData();
 });
 
-<<<<<<< HEAD
 </script>
-=======
-</script>
-
-<style scoped></style>
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e

@@ -7,19 +7,10 @@
       ><Icon name="heroicons:home-solid" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block">Home</span></NuxtLink
     >
-<<<<<<< HEAD
     <NuxtLink :to="linkDestination">
     <Icon name="prime:objects-column" size="36" class=""></Icon>
     <span class="text-lg p-4 hidden md:inline-block">My Account</span>
     </NuxtLink>
-=======
-    <NuxtLink to="/account"
-      ><Icon name="prime:objects-column" size="36" class=""></Icon
-      ><span class="text-lg p-4 hidden md:inline-block"
-        >My Account</span
-      ></NuxtLink
-    >
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
     <NuxtLink to="/socialFeed"
       ><Icon name="heroicons:chat-bubble-left-right-20-solid" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block"
@@ -29,11 +20,7 @@
     <NuxtLink to="/games"
       ><Icon name="game-icons:console-controller" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block"
-<<<<<<< HEAD
         >New & Upcoming</span
-=======
-        >New & Trending</span
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
       ></NuxtLink
     >
     <NuxtLink to="/news"
@@ -70,12 +57,9 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
 const user = useSupabaseUser();
 const linkDestination = user.value ? '/account' : '/login';
 
-=======
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
 const runtimeConfig = useRuntimeConfig();
 
 const { data, error } = await useFetch(
