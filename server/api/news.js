@@ -10,7 +10,7 @@ export default defineEventHandler(async () => {
       .toISOString()
       .split("T")[0];
 
-      // Construct API request URL
+    // Construct API request URL
     const requestUrl = `${apiUrl}articles/?api_key=${apiKey}&filter=publish_date:${sevenDaysAgo}|${today}&limit=12&sort=publish_date:desc&format=json`;
 
     // Fetch data from the API
@@ -19,7 +19,9 @@ export default defineEventHandler(async () => {
 
     // Check if the API request was successful
     if (!response.ok) {
-      throw new Error(`API request failed: ${data.error || response.statusText}`);
+      throw new Error(
+        `API request failed: ${data.error || response.statusText}`
+      );
     }
 
     return data;

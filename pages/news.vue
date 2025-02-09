@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h1 class="bg-[url('/assets/images/wave.jpg')] bg-cover bg-center text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg">Gaming News</h1>
-    
+    <h1
+      class="bg-[url('/assets/images/wave.jpg')] bg-cover bg-center text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg"
+    >
+      Gaming News
+    </h1>
+
     <div v-if="loading" class="text-center text-xl py-4">
       Loading articles...
     </div>
@@ -12,29 +16,36 @@
       <div v-for="article in articles" :key="article.id" class="p-4 border-b">
         <!-- Article Image -->
         <img
-        v-if="article.image?.original"
-        :src="article.image.original"
-        :alt="article.title"
-        class="w-full h-auto rounded-lg shadow-md" 
+          v-if="article.image?.original"
+          :src="article.image.original"
+          :alt="article.title"
+          class="w-full h-auto rounded-lg shadow-md"
         />
         <!-- Article Title -->
         <h2 class="text-2xl font-bold py-4">{{ article.title }}</h2>
         <!-- Article Summary (Deck)-->
-        <p v-if="article.deck" class="italic text-gray-600 pb-2">{{ article.deck }}</p>
+        <p v-if="article.deck" class="italic text-gray-600 pb-2">
+          {{ article.deck }}
+        </p>
 
         <!-- Article Body (First 200 Characters) -->
-         <div v-html="truncateText(article.body, 200)" class="font-serif"></div>
+        <div v-html="truncateText(article.body, 200)" class="font-serif"></div>
 
-         <!-- Article Metadata -->
-          <div class="flex justify-between items-center py-4 text-sm text-gray-600">
-            <p>Author: {{ article.authors || "Unknown" }}</p>
-            <p class="italic">{{ formatDate(article.publish_date) }}</p>
-          </div>
+        <!-- Article Metadata -->
+        <div
+          class="flex justify-between items-center py-4 text-sm text-gray-600"
+        >
+          <p>Author: {{ article.authors || "Unknown" }}</p>
+          <p class="italic">{{ formatDate(article.publish_date) }}</p>
+        </div>
 
-          <!-- Read More Link -->
-           <a :href="article.site_detail_url" 
-           target="_blank"
-           class="text-accent2 hover:underline">Read full article</a>
+        <!-- Read More Link -->
+        <a
+          :href="article.site_detail_url"
+          target="_blank"
+          class="text-accent2 hover:underline"
+          >Read full article</a
+        >
       </div>
     </div>
   </div>
@@ -52,16 +63,15 @@ const truncateText = (text, length) => {
 };
 
 const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric"};
+  const options = { year: "numeric", month: "long", day: "numeric" };
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
 const fetchData = async () => {
   try {
     const response = await $fetch("/api/news");
-
     const articlesData = response?.results ?? [];
-    articles.value = response.results;
+    articles.value = articlesData;
 
     if (articlesData.length === 0) {
       error.value = "No articles found.";
@@ -77,5 +87,4 @@ const fetchData = async () => {
 onMounted(() => {
   fetchData();
 });
-
 </script>

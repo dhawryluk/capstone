@@ -20,7 +20,7 @@
     <NuxtLink to="/games"
       ><Icon name="game-icons:console-controller" size="36" class=""></Icon
       ><span class="text-lg p-4 hidden md:inline-block"
-        >New & Upcoming</span
+        >New & Trending</span
       ></NuxtLink
     >
     <NuxtLink to="/news"
