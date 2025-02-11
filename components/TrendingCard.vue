@@ -48,11 +48,6 @@ const results = ref([]);
 const error = ref(null);
 const loading = ref(true);
 
-const truncateText = (text, length) => {
-  if (!text) return "";
-  return text.length > length ? text.slice(0, length) + "..." : text;
-};
-
 const fetchGames = async () => {
   try {
     const response = await fetch("/api/trending");

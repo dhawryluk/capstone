@@ -1,29 +1,75 @@
-## CPNT265 Final Capstone Project
-# Author - Derek Hawryluk
+# Nuxt Minimal Starter
 
-**NPM resources used**
-- Supabase
-- Nuxt UI
-- Tailwind
-- Google Fonts
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-**API fetching resourse**
-- Supabase
-- GameStop
-- RAWG
+## Setup
 
-**Additional resources**
+Make sure to install dependencies:
 
-*Images:* 
-- https://www.freepik.com/
-- https://alphacoders.com/video-game-wallpapers
+```bash
+# npm
+npm install
 
-*AI:*
-ChatGPT
+# pnpm
+pnpm install
 
-*Docs*
-- Tailwind
-- Nuxt
-- Supabase
-- Vercel
-- w3schools
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

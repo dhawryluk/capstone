@@ -14,13 +14,18 @@
       </p>
       <div>
         <UCarousel
-          v-slot="{ item }"
-          :items="items"
+          :items="results.slice(0, 8)"
           :ui="{ item: 'basis-full' }"
-          class="rounded-lg overflow-hidden pt-14 w-2/3 h-2/3 mx-auto"
+          class="pt-14 w-2/3 h-2/3 mx-auto"
           arrows
         >
-          <img :src="item" class="w-full" draggable="false" />
+          <template #default="{ item: game }">
+            <img
+              :src="game.background_image"
+              class="w-full"
+              draggable="false"
+            />
+          </template>
         </UCarousel>
       </div>
       <ComingSoon />
@@ -29,12 +34,31 @@
 </template>
 
 <script setup>
-const items = [
-  "https://images.alphacoders.com/134/1343705.png",
-  "https://images5.alphacoders.com/134/1349297.png",
-  "https://images6.alphacoders.com/134/1348515.png",
-  "https://images4.alphacoders.com/135/1356322.jpeg",
-  "https://images5.alphacoders.com/133/1337070.jpeg",
-  "https://images6.alphacoders.com/697/697947.jpg",
-];
+import { ref, onMounted } from "vue";
+
+const results = ref([]);
+const error = ref(null);
+const loading = ref(true);
+
+const fetchGames = async () => {
+  try {
+    const response = await fetch("/api/trending");
+    const data = await response.json();
+
+    if (response.ok && data?.results) {
+      results.value = data.results;
+    } else {
+      console.warn("Data is not in the expected format or is missing:", data);
+    }
+  } catch (err) {
+    console.error("Fetch error:", err);
+    error.value = err.message;
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  fetchGames();
+});
 </script>
