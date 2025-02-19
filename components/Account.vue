@@ -1,40 +1,45 @@
 <template>
-  <div
-    class="bg-secondary p-4 rounded-xl mt-14 text-darkColor dark:text-lightColor font-sans"
-  >
-    <form class="form-widget text-lightColor" @submit.prevent="updateProfile">
-      <Avatar v-model:path="avatar_path" @upload="updateProfile" />
-      <div>
-        <label for="email" class="block mt-2 font-serif uppercase">Email</label>
-        <input
-          id="email"
-          type="text"
-          :value="user.email"
-          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          disabled
-        />
-      </div>
-      <div>
-        <label for="username" class="block mt-2 font-serif uppercase"
-          >User Name</label
-        >
-        <input
-          id="username"
-          type="text"
-          v-model="username"
-          class="w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-        />
-      </div>
-      <div class="flex gap-4 mt-4">
-        <input
-          type="submit"
-          class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          :value="loading ? 'Loading ...' : 'Update'"
-          :disabled="loading"
-        />
-        <PrimaryButton class="w-24" @click="signOut">Sign Out</PrimaryButton>
-      </div>
-    </form>
+  <div class="flex justify-center mt-14 text-lightColor font-sans">
+    <div class="w-5/6 md:w-2/3 lg:w-1/2 bg-secondary p-4 rounded-xl">
+      <form
+        class="form-widget bg-secondary p-4 rounded-xl text-darkColor dark:text-lightColor font-sans"
+        @submit.prevent="updateProfile"
+      >
+        <Avatar v-model:path="avatar_path" @upload="updateProfile" />
+        <div>
+          <label for="email" class="block mt-2 font-serif uppercase"
+            >Email</label
+          >
+          <input
+            id="email"
+            type="text"
+            :value="user.email"
+            class="block w-full rounded-sm border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+            disabled
+          />
+        </div>
+        <div>
+          <label for="username" class="block mt-2 font-serif uppercase"
+            >User Name</label
+          >
+          <input
+            id="username"
+            type="text"
+            v-model="username"
+            class="block w-full rounded-sm border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          />
+        </div>
+        <div class="flex gap-4 mt-4 justify-end">
+          <input
+            type="submit"
+            class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+            :value="loading ? 'Loading ...' : 'Update'"
+            :disabled="loading"
+          />
+          <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -77,7 +82,7 @@ async function updateProfile() {
     };
 
     const { error } = await supabase.from("profiles").upsert(updates, {
-      returning: "minimal", // Don't return the value after inserting
+      returning: "minimal",
     });
 
     if (error) throw error;

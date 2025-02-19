@@ -17,7 +17,13 @@
         <div
           :style="{ backgroundImage: `url(${game.background_image})` }"
           class="bg-cover bg-center rounded-lg h-full w-full"
-        ></div>
+        >
+          <h2
+            class="h-full flex justify-end items-end text-xl pr-4 pb-2 text-bold"
+          >
+            {{ game.name }}
+          </h2>
+        </div>
       </div>
     </div>
   </div>

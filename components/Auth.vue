@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="bg-secondary p-4 rounded-xl mx-auto mt-14 text-lightColor font-sans"
-  >
-    <div class="">
+  <div class="flex justify-center mt-14 text-lightColor font-sans">
+    <div class="w-5/6 md:w-2/3 lg:w-1/2 bg-secondary p-4 rounded-xl">
       <h1 class="text-2xl m-2 font-serif uppercase">Sign up or Login</h1>
       <form @submit.prevent="signIn">
         <div class="flex p-2">

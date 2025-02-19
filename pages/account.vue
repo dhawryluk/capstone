@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full mx-auto">
     <NuxtLink to="/account">
       <Account />
     </NuxtLink>

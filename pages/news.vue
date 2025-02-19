@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1
-      class="bg-[url('/assets/images/wave.jpg')] bg-cover bg-center text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg"
+      class="dark:bg-gradient-to-r dark:from-secondary dark:via-accent2 dark:to-darkColor bg-gradient-to-r from-lightColor via-accent2 to-white text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center my-4 p-4 font-sans drop-shadow-lg"
     >
       Gaming News
     </h1>
