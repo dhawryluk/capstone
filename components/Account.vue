@@ -1,45 +1,41 @@
 <template>
-  <div class="flex justify-center mt-14 text-lightColor font-sans">
-    <div class="w-5/6 md:w-2/3 lg:w-1/2 bg-secondary p-4 rounded-xl">
-      <form
-        class="form-widget bg-secondary p-4 rounded-xl text-darkColor dark:text-lightColor font-sans"
-        @submit.prevent="updateProfile"
-      >
-        <Avatar v-model:path="avatar_path" @upload="updateProfile" />
-        <div>
-          <label for="email" class="block mt-2 font-serif uppercase"
-            >Email</label
-          >
-          <input
-            id="email"
-            type="text"
-            :value="user.email"
-            class="block w-full rounded-sm border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-            disabled
-          />
-        </div>
-        <div>
-          <label for="username" class="block mt-2 font-serif uppercase"
-            >User Name</label
-          >
-          <input
-            id="username"
-            type="text"
-            v-model="username"
-            class="block w-full rounded-sm border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          />
-        </div>
-        <div class="flex gap-4 mt-4 justify-end">
-          <input
-            type="submit"
-            class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-            :value="loading ? 'Loading ...' : 'Update'"
-            :disabled="loading"
-          />
-          <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
-        </div>
-      </form>
-    </div>
+  <div
+    class="flex flex-col pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
+  >
+    <form
+      class="form-widget flex flex-col space-y-6"
+      @submit.prevent="updateProfile"
+    >
+      <Avatar v-model:path="avatar_path" @upload="updateProfile" />
+      <div>
+        <input
+          placeholder="Your Email"
+          id="email"
+          type="text"
+          :value="user.email"
+          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+          disabled
+        />
+      </div>
+      <div>
+        <input
+          placeholder="Your Username"
+          id="username"
+          type="text"
+          v-model="username"
+          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        />
+      </div>
+      <div class="flex gap-4 pt-4">
+        <input
+          type="submit"
+          class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
+          :value="loading ? 'Loading ...' : 'Update'"
+          :disabled="loading"
+        />
+        <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
+      </div>
+    </form>
   </div>
 </template>
 

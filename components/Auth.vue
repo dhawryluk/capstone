@@ -1,35 +1,35 @@
 <template>
-  <div class="flex justify-center mt-14 text-lightColor font-sans">
-    <div class="w-5/6 md:w-2/3 lg:w-1/2 bg-secondary p-4 rounded-xl">
-      <h1 class="text-2xl m-2 font-serif uppercase">Sign up or Login</h1>
-      <form @submit.prevent="signIn">
-        <div class="flex p-2">
-          <label for="email" class="w-48 m-2 uppercase">Email:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            v-model="email"
-            class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          />
-        </div>
-        <div class="flex p-2">
-          <label for="password" class="w-48 m-2 uppercase">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            v-model="password"
-            class="flex justify-self-end w-full rounded-sm border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary self-end"
-          />
-        </div>
-      </form>
-      <div class="flex justify-end gap-4 pt-4 mr-2">
+  <div
+    class="flex flex-col pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
+  >
+    <h1 class="text-3xl pb-6">Sign up or Login</h1>
+    <form @submit.prevent="signIn" class="form-widget flex flex-col space-y-6">
+      <div>
+        <input
+          placeholder="Your Email"
+          type="email"
+          name="email"
+          id="email"
+          v-model="email"
+          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        />
+      </div>
+      <div>
+        <input
+          placeholder="Enter Password"
+          type="password"
+          name="password"
+          id="password"
+          v-model="password"
+          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        />
+      </div>
+      <div class="flex gap-4 pt-4">
         <PrimaryButton @click="signIn">Sign In</PrimaryButton>
         <PrimaryButton @click="signUp">Sign Up</PrimaryButton>
         <PrimaryButton @click="googleLogin">Login with Google</PrimaryButton>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 

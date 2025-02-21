@@ -7,7 +7,7 @@
         ><Icon name="heroicons:home-solid" size="36"></Icon
       ></NuxtLink>
       <NuxtLink :to="linkDestination">
-        <Icon name="prime:objects-column" size="36" class=""></Icon>
+        <Icon name="heroicons:user-solid" size="36" class=""></Icon>
       </NuxtLink>
       <NuxtLink to="/socialFeed"
         ><Icon name="heroicons:chat-bubble-left-right-20-solid" size="36"></Icon

@@ -1,11 +1,18 @@
 <template>
   <div class="grid gap-4">
-    <div class="w-full bg-secondary p-2 md:p-4 rounded-lg h-[400px]">
-      <div
+    <div class="bg-secondary p-2 md:p-4 rounded-lg h-[500px]">
+      <NuxtLink
         v-if="randomGames.length > 0"
-        :style="{ backgroundImage: `url(${randomGames[0].background_image})` }"
-        class="bg-cover bg-center rounded-lg h-full w-full"
-      ></div>
+        :to="`/games/${randomGames[0].slug}`"
+        class="block h-full w-full"
+      >
+        <div
+          :style="{
+            backgroundImage: `url(${randomGames[0].background_image})`,
+          }"
+          class="bg-cover bg-center rounded-lg h-full w-full"
+        ></div>
+      </NuxtLink>
     </div>
 
     <div class="grid md:grid-cols-2 gap-4">
@@ -14,16 +21,18 @@
         :key="game.id"
         class="bg-secondary p-2 md:p-4 rounded-lg h-[300px]"
       >
-        <div
-          :style="{ backgroundImage: `url(${game.background_image})` }"
-          class="bg-cover bg-center rounded-lg h-full w-full"
-        >
-          <h2
-            class="h-full flex justify-end items-end text-xl pr-4 pb-2 text-bold"
+        <NuxtLink :to="`/games/${game.slug}`" class="block h-full w-full">
+          <div
+            :style="{ backgroundImage: `url(${game.background_image})` }"
+            class="bg-cover bg-center rounded-lg h-full w-full"
           >
-            {{ game.name }}
-          </h2>
-        </div>
+            <h2
+              class="h-full flex justify-end items-end text-xl pr-4 pb-2 text-bold"
+            >
+              {{ game.name }}
+            </h2>
+          </div>
+        </NuxtLink>
       </div>
     </div>
   </div>
