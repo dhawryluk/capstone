@@ -5,7 +5,6 @@
     >
       Gaming News
     </h1>
-
     <div v-if="loading" class="text-center text-xl py-4">
       Loading articles...
     </div>
