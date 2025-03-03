@@ -24,12 +24,12 @@
           class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
         />
       </div>
-      <div class="flex gap-4 pt-4">
+    </form>
+    <div class="flex gap-4 pt-4">
         <PrimaryButton @click="signIn">Sign In</PrimaryButton>
         <PrimaryButton @click="signUp">Sign Up</PrimaryButton>
         <PrimaryButton @click="googleLogin">Login with Google</PrimaryButton>
       </div>
-    </form>
   </div>
 </template>
 
@@ -39,7 +39,6 @@ const supabase = useSupabaseClient();
 const email = ref("");
 const password = ref("");
 
-console.log(email, password, "password");
 // Sign in info
 async function signIn() {
   try {
@@ -74,10 +73,10 @@ async function googleLogin() {
   const { data, error } = supabase.auth.signInWithOAuth({
     provider: "google",
   });
-  // if (error) {
-  //   console.error(error);
-  // }
+  if (error) {
+    console.error(error);
+  }
   console.log("data");
-  // router.push("/confirm");
+  router.push("/confirm");
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mx-auto mt-8">
+  <div class="w-5/6 mx-auto mt-8">
     <h1 class="text-3xl font-bold text-center p-6">New and Trending</h1>
     <div v-if="loading" class="text-center text-xl py-4">Loading games...</div>
     <div v-else-if="error" class="text-center text-red-500 py-4">
