@@ -3,7 +3,7 @@
     class="flex flex-col pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
   >
     <form
-      class="form-widget flex flex-col space-y-6"
+      class="flex flex-col space-y-6"
       @submit.prevent="updateProfile"
     >
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
@@ -42,7 +42,7 @@
 <script setup>
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-const loading = ref(true);
+const loading = ref(false);
 const username = ref("");
 const website = ref("");
 const avatar_path = ref("");

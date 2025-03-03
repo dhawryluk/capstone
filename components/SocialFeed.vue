@@ -52,7 +52,9 @@
       </UModal>
     </div>
     <div>
-      <h1 class="flex flex-col text-2xl mt-6">Lets Chat</h1>
+      <h1 class="flex flex-col text-2xl mt-6 md:w-3/4 md:mx-auto space-y-4">
+        Lets Chat!
+      </h1>
       <ul>
         <li
           v-for="(comment, i) in data.slice().reverse()"

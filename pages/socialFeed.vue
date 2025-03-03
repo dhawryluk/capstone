@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full mx-auto">
     <SocialFeed />
   </div>
 </template>
