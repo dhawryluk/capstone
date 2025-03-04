@@ -1,5 +1,5 @@
 <template>
-  <div class="text-darkColor dark:text-lightColor font-sans">
+  <div class="w-5/6 m-auto text-darkColor dark:text-lightColor font-sans">
     <form
       @submit.prevent="postComment"
       class="flex flex-col md:w-3/4 md:mx-auto space-y-4 h-full"
@@ -52,10 +52,10 @@
       </UModal>
     </div>
     <div>
-      <h1 class="flex flex-col text-2xl mt-6 md:w-3/4 md:mx-auto space-y-4">
+      <ul>
+        <h1 class="text-3xl py-6">
         Lets Chat!
       </h1>
-      <ul>
         <li
           v-for="(comment, i) in data.slice().reverse()"
           :key="i"
