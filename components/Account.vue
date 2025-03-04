@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="flex flex-col pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
-  >
     <form
-      class="form-widget flex flex-col space-y-6"
+      class="flex flex-col space-y-6 pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
       @submit.prevent="updateProfile"
     >
       <Avatar v-model:path="avatar_path" @upload="updateProfile" />
@@ -27,16 +24,14 @@
         />
       </div>
       <div class="flex gap-4 pt-4">
-        <input
-          type="submit"
-          class="w-24 rounded-lg border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-          :value="loading ? 'Loading ...' : 'Update'"
-          :disabled="loading"
-        />
+        <PrimaryButton
+          @click="updateProfile"
+          :disabled="loading">
+          {{ loading ? 'Loading ...' : 'Update' }}
+        </PrimaryButton>
         <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
       </div>
     </form>
-  </div>
 </template>
 
 <script setup>
@@ -47,7 +42,7 @@ const username = ref("");
 const website = ref("");
 const avatar_path = ref("");
 const router = useRouter();
-
+console.log(supabase, username, "supabase")
 loading.value = true;
 
 const { data } = await supabase
@@ -66,6 +61,7 @@ loading.value = false;
 
 async function updateProfile() {
   try {
+    console.log(username, "username")
     loading.value = true;
     const user = useSupabaseUser();
 
