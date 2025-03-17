@@ -1,38 +1,64 @@
 <template>
-    <form
-      class="flex flex-col space-y-6 pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
-      @submit.prevent="updateProfile"
-    >
-      <Avatar v-model:path="avatar_path" @upload="updateProfile" />
-      <div>
-        <input
-          placeholder="Your Email"
-          id="email"
-          type="text"
-          :value="user.email"
-          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
-          disabled
-        />
-      </div>
-      <div>
-        <input
-          placeholder="Your Username"
-          id="username"
-          type="text"
-          v-model="username"
-          class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
-        />
-      </div>
-      <div class="flex gap-4 pt-4">
-        <PrimaryButton
-          @click="updateProfile"
-          :disabled="loading">
-          {{ loading ? 'Loading ...' : 'Update' }}
-        </PrimaryButton>
-        <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
-      </div>
-    </form>
+  <form
+    class="flex flex-col space-y-6 pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
+    @submit.prevent="updateProfile"
+  >
+    <Avatar v-model:path="avatar_path" @upload="updateProfile" />
+    <div>
+      <input
+        placeholder="Your Email"
+        id="email"
+        type="text"
+        :value="user.email"
+        class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        disabled
+      />
+    </div>
+    <div>
+      <input
+        placeholder="Your Username"
+        id="username"
+        type="text"
+        v-model="username"
+        class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+      />
+    </div>
+    <div class="flex gap-4 pt-4">
+      <PrimaryButton
+        @click="updateProfile"
+        :disabled="loading">
+        {{ loading ? 'Loading ...' : 'Update' }}
+      </PrimaryButton>
+      <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
+    </div>
+    
+    <!-- Add the UModal here -->
+    <UModal v-model="isOpen" prevent-close>
+      <UCard
+        :ui="{
+          ring: '',
+          divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+        }"
+      >
+        <div class="flex items-center justify-between">
+          <h3
+            class="text-base font-semibold leading-6 text-darkColor dark:text-lightColor"
+          >
+            Your update has been submitted!
+          </h3>
+          <UButton
+            color="gray"
+            variant="ghost"
+            icon="i-heroicons-x-mark-20-solid"
+            class="-my-1"
+            @click="isClosed"
+          />
+        </div>
+      </UCard>
+    </UModal>
+  </form>
 </template>
+
 
 <script setup>
 const supabase = useSupabaseClient();
@@ -41,10 +67,11 @@ const loading = ref(true);
 const username = ref("");
 const website = ref("");
 const avatar_path = ref("");
+const isOpen = ref(false); // Add state for the modal
 const router = useRouter();
-console.log(supabase, username, "supabase")
 loading.value = true;
 
+// Fetch user data
 const { data } = await supabase
   .from("profiles")
   .select(`username, website, avatar_url`)
@@ -59,11 +86,10 @@ if (data) {
 
 loading.value = false;
 
+// Function to update the profile
 async function updateProfile() {
   try {
-    console.log(username, "username")
     loading.value = true;
-    const user = useSupabaseUser();
 
     const updates = {
       id: user.value.id,
@@ -78,6 +104,9 @@ async function updateProfile() {
     });
 
     if (error) throw error;
+
+    // Open the modal on success
+    isOpen.value = true;
   } catch (error) {
     alert(error.message);
   } finally {
@@ -85,7 +114,12 @@ async function updateProfile() {
   }
 }
 
-// Sign out Function
+// Function to close the modal
+function isClosed() {
+  isOpen.value = false;
+}
+
+// Function to sign out
 async function signOut() {
   try {
     loading.value = true;

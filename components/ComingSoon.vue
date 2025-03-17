@@ -7,7 +7,7 @@
       <div
         v-for="game in results"
         :key="game.id"
-        class="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-1"
+        class="bg-secondary/20 dark:bg-secondary dark:text-white text-black rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-1"
       >
         <NuxtLink :to="`/games/${game.slug}`" class="block">
           <img
@@ -18,7 +18,7 @@
         </NuxtLink>
         <div class="p-4">
           <h2 class="text-xl font-semibold">{{ game.name }}</h2>
-          <p class="text-gray-400 italic">Release Date: {{ game.released }}</p>
+          <p class="text-secondary dark:text-lightColor italic">Release Date: {{ game.released }}</p>
         </div>
       </div>
     </div>

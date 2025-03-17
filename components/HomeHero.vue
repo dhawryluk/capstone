@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-secondary rounded-lg p-4">
+  <div class="bg-secondary/20 dark:bg-secondary rounded-lg p-4">
     <div
       class="bg-[url('/assets/images/soldier.jpg')] bg-cover bg-center rounded-lg"
     >

@@ -9,7 +9,7 @@
       <div
         v-for="trending in results"
         :key="trending.id"
-        class="bg-secondary shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out"
+        class="bg-secondary/20 dark:bg-secondary shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out"
       >
         <NuxtLink :to="`/games/${trending.slug}`">
           <img

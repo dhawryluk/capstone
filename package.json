@@ -18,5 +18,9 @@
     "nuxt": "^3.6.0",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@iconify-json/game-icons": "^1.2.1",
+    "@iconify-json/icon-park-twotone": "^1.2.2"
   }
 }

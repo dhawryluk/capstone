@@ -1,6 +1,6 @@
 <template>
   <div class="grid gap-4">
-    <div class="bg-secondary p-2 md:p-4 rounded-lg h-[700px]">
+    <div class="bg-secondary/20 dark:bg-secondary p-2 md:p-4 rounded-lg h-[700px]">
       <NuxtLink
         v-if="randomGames.length > 0"
         :to="`/games/${randomGames[0].slug}`"
@@ -38,7 +38,7 @@
       <div
         v-for="game in randomGames.slice(1, 3)"
         :key="game.id"
-        class="bg-secondary p-2 md:p-4 rounded-lg h-[400px]"
+        class="bg-secondary/20 dark:bg-secondary text-white p-2 md:p-4 rounded-lg h-[400px]"
       >
         <NuxtLink :to="`/games/${game.slug}`" class="block h-full w-full">
           <div
