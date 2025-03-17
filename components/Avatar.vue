@@ -8,23 +8,21 @@
     />
     <div
       v-else
-      class="mb-12 w-1/6 h-1/6 rounded-full bg-secondary overflow-hidden max-w-[100%] ring-2 dark:ring-accent2 ring-accent1"
+      class="mb-12 w-36 h-36 rounded-full bg-secondary overflow-hidden max-w-[100%] ring-2 dark:ring-accent2 ring-accent1"
     ></div>
 
     <div class="mb-8">
-      <label
-        class="block max-w-fit rounded-md border-solid border-2 border-accent1 dark:border-accent2 p-2 font-serif bg-secondary"
-        for="single"
-      >
+      <button for="single" @click="uploadAvatar">
         {{ uploading ? "Uploading ..." : "Upload" }}
-      </label>
+      </button>
       <input
-        style="position: absolute; visibility: hidden"
         type="file"
         id="single"
         accept="image/*"
+        class="hidden"
         @change="uploadAvatar"
         :disabled="uploading"
+        required
       />
     </div>
   </div>
@@ -52,8 +50,9 @@ const downloadImage = async () => {
   }
 }
 
-const uploadAvatar = async (evt) => {
-  files.value = evt.target.files
+const uploadAvatar = async (e) => {
+  console.log(e.target.files[0])
+  files.value = e.target.files
   try {
     uploading.value = true
 

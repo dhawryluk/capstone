@@ -18,8 +18,6 @@ export default defineEventHandler(async (event) => {
       new Date().toISOString().split("T")[0]
     },${ninetyDaysAhead}&ordering=-added&page=${page}&page_size=${pageSize}`;
 
-    console.log("Request URL:", requestUrl);
-
     const response = await fetch(requestUrl);
     const data = await response.json();
 
@@ -29,9 +27,6 @@ export default defineEventHandler(async (event) => {
       );
     }
 
-    // Log the raw API response
-    console.log("Raw API Response:", data);
-
     // Define the excluded slugs
     const excludedSlugs = ["hentai", "nsfw", "sexual-content", "nudity"];
 
@@ -40,9 +35,6 @@ export default defineEventHandler(async (event) => {
       (game) =>
         game.tags && !game.tags.some((tag) => excludedSlugs.includes(tag.slug))
     );
-
-    // Log the filtered data
-    console.log("Filtered Data:", filteredData);
 
     return { results: filteredData || [] };
   } catch (err) {

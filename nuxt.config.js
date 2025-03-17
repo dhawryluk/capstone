@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/image",
     "@nuxtjs/supabase",
+    "@nuxt/icon",
   ],
   runtimeConfig: {
     public: {

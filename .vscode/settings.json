@@ -1,11 +1,19 @@
 {
-<<<<<<< HEAD
   "cSpell.words": [
-    "GAMESPOT",
     "IGDB",
     "swiper"
-  ]
-=======
-  "cSpell.words": ["IGDB", "swiper"]
->>>>>>> c094205e04dd8d9b4e8729a40a4bb496ce07175e
+  ],
+  "search.exclude": {
+    "**/*.code-search": false,
+    "**/bower_components": false,
+    "**/node_modules": false
+  },
+  "files.exclude": {
+    "**/.DS_Store": false,
+    "**/.git": false,
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false,
+    "**/Thumbs.db": false
+  }
 }

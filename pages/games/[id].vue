@@ -60,7 +60,6 @@ const { data, error } = await useFetch(
   `${runtimeConfig.public.GAMES_API_URL}/games/${route.params.id}?key=${runtimeConfig.public.GAMES_API_KEY}`
 );
 let game = {};
-console.log(data);
 if (error.value) {
   console.error("API request failed:", error.value);
 } else if (data.value) {

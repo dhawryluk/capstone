@@ -1,9 +1,9 @@
 <template>
   <div
-    class="w-full mt-14 bg-[url('/assets/images/wave.jpg')] bg-cover bg-center"
+    class="w-full mt-14 dark:bg-gradient-to-r dark:from-secondary dark:via-accent2 dark:to-darkColor bg-gradient-to-r from-lightColor via-accent2 to-white text-lightColor"
   >
     <div
-      class="flex justify-between bg-[url('/assets/images/overwatch.png')] bg-no-repeat bg-center"
+      class="flex justify-between"
     >
       <div
         class="w-1/3 md:w-1/4 bg-white p-4 font-bold opacity-30 grid grid-cols-2 justify-evenly"
@@ -28,10 +28,10 @@
       <div
         class="text-sm md:text-md self-end p-1 md:p-2 mb-2 bg-secondary rounded-xl"
       >
-        <p>&copy;Copyright 2024 4Play</p>
+        <p>&copy;Copyright {{ today }} 4Play</p>
       </div>
       <div
-        class="flex flex-col md:flex-row self-end gap-4 md:gap-12 p-4 text-md md:text-2xl text-accent2"
+        class="flex flex-col self-end gap-4 md:gap-12 p-4 text-md md:text-2xl text-accent2"
       >
         <NuxtLink to="/about" class="text-accent1 dark:text-accent2"
           >About 4Play</NuxtLink
@@ -44,4 +44,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const today = new Date().getFullYear();
+</script>

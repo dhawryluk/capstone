@@ -71,16 +71,12 @@ const fetchGames = async () => {
     const response = await fetch("/api/trending");
     const data = await response.json();
 
-    console.log("Fetched data:", data);
-
     if (response.ok && data?.results) {
       games.value = data.results;
 
       randomGames.value = games.value
         .sort(() => 0.5 - Math.random())
         .slice(0, 3);
-
-      console.log("Random games selected:", randomGames.value);
     } else {
       console.warn("Data is not in the expected format or is missing:", data);
     }

@@ -56,7 +56,7 @@ async function signIn() {
 // Sign up info
 async function signUp() {
   try {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value,
     });
@@ -70,13 +70,12 @@ async function signUp() {
 // Use Google Login
 async function googleLogin() {
   const supabase = useSupabaseClient();
-  const { data, error } = supabase.auth.signInWithOAuth({
+  const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
   });
   if (error) {
     console.error(error);
   }
-  console.log("data");
   router.push("/confirm");
 }
 </script>

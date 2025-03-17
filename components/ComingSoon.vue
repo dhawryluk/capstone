@@ -48,8 +48,6 @@ const fetchGames = async () => {
     const data = await response.json();
 
     // Log the entire API response
-    console.log("API Response:", data);
-
     if (response.ok && data?.results) {
       if (data.results.length < pageSize) {
         hasMore.value = false;
