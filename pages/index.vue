@@ -16,7 +16,7 @@
         <UCarousel
           :items="results.slice(0, 8)"
           :ui="{ item: 'basis-full' }"
-          class="pt-14 w-2/3 h-2/3 mx-auto"
+          class="pt-14 w-5/6 mx-auto"
           arrows
         >
           <template #default="{ item: game }">

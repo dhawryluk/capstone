@@ -1,16 +1,16 @@
 <template>
   <form
-    class="flex flex-col space-y-6 pt-14 w-1/3 md:w-1/2 mx-auto text-darkColor dark:text-lightColor font-sans"
+    class="flex flex-col space-y-6 pt-14 w-full sm:w-5/6 md:w-1/2 m-auto text-darkColor dark:text-lightColor font-sans"
     @submit.prevent="updateProfile"
   >
-    <Avatar v-model:path="avatar_path" @upload="updateProfile" />
+    <!-- <Avatar v-model:path="avatar_path" @upload="updateProfile" /> -->
     <div>
       <input
         placeholder="Your Email"
         id="email"
         type="text"
         :value="user.email"
-        class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        class="w-5/6 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
         disabled
       />
     </div>
@@ -20,7 +20,7 @@
         id="username"
         type="text"
         v-model="username"
-        class="w-3/4 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
+        class="w-5/6 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
       />
     </div>
     <div class="flex gap-4 pt-4">
@@ -32,7 +32,6 @@
       <PrimaryButton @click="signOut">Sign Out</PrimaryButton>
     </div>
     
-    <!-- Add the UModal here -->
     <UModal v-model="isOpen" prevent-close>
       <UCard
         :ui="{

@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end text-accent1 dark:text-accent2 my-4">
-    <div class="flex bg-secondary/20 dark:bg-secondary rounded-lg p-4 gap-12">
+    <div class="w-full sm:w-fit flex bg-secondary/20 dark:bg-secondary rounded-lg p-4 gap-12">
       <!-- User Email with Tooltip -->
       <NuxtLink v-if="user" to="/account" class="group relative">
         <h3 class="username">{{ user.email }}</h3>

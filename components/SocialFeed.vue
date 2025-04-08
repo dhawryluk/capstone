@@ -4,16 +4,7 @@
       @submit.prevent="postComment"
       class="flex flex-col md:w-3/4 md:mx-auto space-y-4 h-full"
     >
-      <h1 class="text-3xl pb-6">What's on you mind?</h1>
-      <input
-        placeholder="User Name"
-        type="text"
-        name="username"
-        id="username"
-        v-model="username"
-        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent2"
-        required
-      />
+      <h1 class="text-3xl pb-6">What's on your mind?</h1>
       <textarea
         placeholder="Your Comment"
         type="text"
@@ -52,57 +43,104 @@
       </UModal>
     </div>
     <div>
-      <ul>
-        <h1 class="text-3xl py-6">
-        Lets Chat!
-      </h1>
+      <ul v-if="data && data.length > 0">
+        <h1 class="text-xl md:text-3xl py-6">
+        Let's Chat!
+        </h1>
         <li
           v-for="(comment, i) in data.slice().reverse()"
           :key="i"
-          class="text-lightColor bg-secondary my-4 p-4 rounded-lg"
-        >
-          <Icon
-            name="heroicons:user-20-solid"
-            size="24"
-            class="text-center text-accent1 dark:text-accent2"
-          /><span class="m-2 italic">{{ comment.username }}:</span>
-          <p class="p-2 pl-4">
-            {{ comment.comments }}
-          </p>
-        </li>
-      </ul>
+          class="text-sm md:text-lg text-lightColor bg-secondary my-2 md:my-4 p-2 md:p-4 rounded-lg"
+  >
+    <Icon
+      name="heroicons:user-20-solid"
+      size="20"
+      class="text-accent1 dark:text-accent2"
+    /><span class="m-2 italic">{{ comment.username }}:</span>
+    <p class="p-2">
+      {{ comment.comments }}
+    </p>
+  </li>
+</ul>
+<p v-else class="text-center text-gray-500">No comments yet. Be the first to post!</p>
     </div>
   </div>
 </template>
 
 <script setup>
 const supabase = useSupabaseClient();
+const user = useSupabaseUser();
 const runtimeConfig = useRuntimeConfig();
 const username = ref("");
 const comments = ref("");
+const data = ref([]);
 let isOpen = ref(false);
+
+onMounted(async () => {
+  if (user.value) {
+    try {
+      const { data: profileData, error } = await supabase
+        .from("profiles")
+        .select(`username, website, avatar_url`)
+        .eq("id", user.value.id)
+        .single();
+
+      if (error) throw error;
+
+      if (profileData) {
+        username.value = profileData.username;
+      }
+    } catch (error) {
+      console.error("Error fetching username:", error);
+    }
+  } else {
+    console.error("User is not logged in.");
+  }
+
+  // Fetch comments
+  try {
+    const { data: commentsData, error } = await supabase
+      .from("social_feed")
+      .select("*");
+
+    if (error) throw error;
+
+    data.value = commentsData || [];
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
+});
 
 // Post new comment
 async function postComment() {
+  if (!username.value) {
+    console.error("Username is not set. Cannot post comment.");
+    return;
+  }
   try {
     const { error } = await supabase
       .from("social_feed")
       .insert([{ username: username.value, comments: comments.value }])
       .select();
     if (error) throw error;
+
     isOpen.value = true;
+
+    // Refresh comments after posting
+    const { data: updatedComments, error: fetchError } = await supabase
+      .from("social_feed")
+      .select("*");
+
+    if (fetchError) throw fetchError;
+    data.value = updatedComments || [];
   } catch (error) {
     console.error(`Error sending message: ${error}`);
   }
 }
+
 // Closing Pop-up
 async function isClosed() {
   isOpen.value = false;
   window.location.reload();
 }
-
-// Fetching comments
-const { data } = await useFetch(
-  `${runtimeConfig.public.SUPABASE_URL}/rest/v1/social_feed?apikey=${runtimeConfig.public.SUPABASE_KEY}`
-);
 </script>
