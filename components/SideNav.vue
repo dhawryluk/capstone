@@ -44,6 +44,14 @@
           News
         </span>
       </NuxtLink>
+      <NuxtLink to="/shop" class="group relative">
+        <Icon name="mdi:tshirt-crew" size="36" />
+        <span
+          class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-darkColor text-lightColor text-xs py-1 px-2 rounded-lg shadow-lg transition-opacity delay-300"
+        >
+          Shop
+        </span>
+      </NuxtLink>
     </div>
 
     <!-- Social Media Links -->
