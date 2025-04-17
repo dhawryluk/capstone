@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       GAMESPOT_API_URL: process.env.GAMESPOT_API_URL,
       GAMESPOT_API_KEY: process.env.GAMESPOT_API_KEY,
       STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
-      STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+      STRIPE_ACCOUNT_ID: process.env.STRIPE_SECRET_KEY,
     },
   },
   supabase: {
