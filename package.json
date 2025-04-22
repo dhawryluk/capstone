@@ -17,6 +17,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/supabase": "^1.4.6",
     "@stripe/stripe-js": "^7.0.0",
+    "embla-carousel-class-names": "^8.6.0",
     "nuxt": "^3.6.0",
     "stripe": "^18.0.0",
     "vue": "latest",

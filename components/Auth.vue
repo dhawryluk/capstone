@@ -42,12 +42,14 @@ const password = ref("");
 // Sign in info
 async function signIn() {
   try {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     });
     if (error) throw error;
-    router.push("/confirm");
+    if (data?.user) {
+      router.push("/confirm");
+    }
   } catch (error) {
     console.error(`Login Error: ${error}`);
   }
@@ -56,12 +58,14 @@ async function signIn() {
 // Sign up info
 async function signUp() {
   try {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: email.value,
       password: password.value,
     });
     if (error) throw error;
-    router.push("/confirm");
+    if (data?.user) {
+      router.push("/confirm");
+    }
   } catch (error) {
     console.error(`Sign Up Error: ${error}`);
   }
@@ -69,13 +73,16 @@ async function signUp() {
 
 // Use Google Login
 async function googleLogin() {
-  const supabase = useSupabaseClient();
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-  });
-  if (error) {
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+    if (error) throw error;
+    if (data?.user) {
+      router.push("/confirm");
+    }
+  } catch (error) {
     console.error(error);
   }
-  router.push("/confirm");
 }
 </script>
