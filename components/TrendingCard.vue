@@ -9,32 +9,16 @@
       <div
         v-for="trending in results"
         :key="trending.id"
-        class="bg-secondary/20 dark:bg-secondary shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out"
+        class="bg-secondary/20 dark:bg-secondary shadow-md rounded-lg overflow-hidden flex flex-col hover:scale-105 hover:shadow-xl transition-transform duration-300 ease-in-out"
       >
         <NuxtLink :to="`/games/${trending.slug}`">
           <img
             :src="trending.background_image"
             :alt="trending.name"
-            class="w-full h-48 object-cover rounded-t-lg shadow-md"
+            class="w-full h-84 object-cover rounded-t-lg"
         /></NuxtLink>
-        <h2 class="text-2xl font-bold p-2">{{ trending.name }}</h2>
-        <div class="flex justify-between items-center p-2 text-sm">
-          <p>Released: {{ trending.released }}</p>
-          <p class="italic">Rating: {{ trending.rating_top }} / 5</p>
-        </div>
-        <p class="p-2">
-          <span class="font-bold mr-2">Genres:</span>
-          <span v-for="(genre, index) in trending.genres" :key="index">
-            {{ genre.name
-            }}<span v-if="index < trending.genres.length - 1">, </span>
-          </span>
-        </p>
-        <div class="pb-4 mb-0">
-          <NuxtLink
-            :to="`/games/${trending.slug}`"
-            class="p-2 text-accent2 hover:underline"
-            >More details</NuxtLink
-          >
+        <div class="p-4 mt-auto">
+          <h3 class="text-lg font-semibold">{{ trending.name }}</h3>
         </div>
       </div>
     </div>
