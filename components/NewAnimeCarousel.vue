@@ -1,18 +1,18 @@
 <template>
-    <div v-if="newAnime.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+    <div v-if="newAnime.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <NuxtLink
             v-for="anime in newAnime"
             :key="anime.id"
             :to="`/anime/${anime.id}`"
-            class="rounded-lg overflow-hidden shadow-lg"
+            class="bg-secondary/20 dark:bg-secondary shadow-md rounded-lg overflow-hidden flex flex-col hover:scale-105 hover:shadow-xl transition-transform duration-300 ease-in-out"
         >
             <img
                 :src="anime.image"
                 :alt="anime.title"
-                class="w-full h-[500px] object-cover"
+                class="w-full h-full object-cover rounded-t-lg"
                 draggable="false"
             />
-            <div class="w-full h-16 bg-gradient-to-t from-secondary to-transparent text-lightColor p-2">
+            <div class="p-4 mt-auto">
                 <p class="text-sm font-bold truncate">{{ anime.title }}</p>
             </div>
         </NuxtLink>

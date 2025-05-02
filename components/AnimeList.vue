@@ -35,7 +35,7 @@
                     class="w-full h-84 object-cover rounded-t-lg"
                 />
                 <div class="p-4 mt-auto">
-                    <h3 class="text-lg font-semibold">{{ anime.title }}</h3>
+                    <h3 class="text-lg font-semibold truncate">{{ anime.title }}</h3>
                 </div>
             </NuxtLink>
         </div>

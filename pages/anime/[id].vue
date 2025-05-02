@@ -20,7 +20,7 @@
                 :src="anime.trailer"
                 frameborder="0"
                 allowfullscreen
-                class="w-full max-w-4xl h-96 rounded shadow-md"
+                class="w-full h-[500px] md:h-[600px] rounded shadow-md"
             ></iframe>
         </div>
     </div>
