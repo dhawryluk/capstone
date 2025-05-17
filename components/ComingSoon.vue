@@ -18,7 +18,18 @@
         </NuxtLink>
         <div class="p-4">
           <h2 class="text-xl font-semibold">{{ game.name }}</h2>
-          <p class="text-secondary dark:text-lightColor italic">Release Date: {{ game.released }}</p>
+          <div class="flex mt-2 justify-center gap-4">
+            <img
+              v-for="(platform, i) in game.parent_platforms"
+              :key="i"
+              :src="getPlatformIcon(platform.platform.slug)"
+              :alt="platform.platform.name"
+              class="h-6 w-6 filter invert"
+            />
+          </div>
+          <p class="text-secondary dark:text-lightColor italic mt-2">
+            Release Date: {{ game.released }}
+          </p>
         </div>
       </div>
     </div>
@@ -39,6 +50,21 @@ const loading = ref(true);
 const page = ref(1);
 const pageSize = 12;
 const hasMore = ref(true);
+
+const getPlatformIcon = (slug) => {
+  const platformIcons = {
+    pc: "/icons/pc.svg",
+    playstation: "/icons/playstation.svg",
+    xbox: "/icons/xbox.svg",
+    nintendo: "/icons/nintendo.svg",
+    ios: "/icons/ios.svg",
+    android: "/icons/android.svg",
+    linex: "/icons/linux.svg",
+    mac: "/icons/mac.svg",
+    web: "/icons/web.svg",
+  };
+  return platformIcons[slug] || "/icons/default.svg";
+};
 
 const fetchGames = async () => {
   try {

@@ -3,9 +3,8 @@ export default defineEventHandler(async () => {
     const apiUrl = process.env.GAMES_API_URL;
     const apiKey = process.env.GAMES_API_KEY;
 
-    // Calculate the date from 30 days ago
     const today = new Date();
-    const thirtyDaysAgo = new Date(today.setDate(today.getDate() - 30))
+    const thirtyDaysAgo = new Date(today.setDate(today.getDate() - 365))
       .toISOString()
       .split("T")[0];
 
@@ -22,10 +21,8 @@ export default defineEventHandler(async () => {
       );
     }
 
-    // Define the excluded slugs
     const excludedSlugs = ["hentai", "nsfw", "sexual-content", "nudity"];
 
-    // Filter out games with excluded slugs
     const filteredData = data.results?.filter(
       (game) => !game.tags.some((tag) => excludedSlugs.includes(tag.slug))
     );
