@@ -43,40 +43,90 @@
       </UModal>
     </div>
     <div>
+      <UModal v-model="isBannedModalOpen" prevent-close>
+        <UCard
+          :ui="{
+            ring: '',
+            divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+          }"
+        >
+          <div class="flex items-center justify-between">
+            <h3
+              class="text-base font-semibold leading-6 text-darkColor dark:text-lightColor"
+            >
+              Inappropriate Language Detected
+            </h3>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-x-mark-20-solid"
+              class="-my-1"
+              @click="isBannedModalOpen = false"
+            />
+          </div>
+          <div class="mt-4">
+            <p>
+              Your comment contains inappropriate language and cannot be posted.
+            </p>
+          </div>
+        </UCard>
+      </UModal>
+    </div>
+    <div>
       <ul v-if="data && data.length > 0">
-        <h1 class="text-xl md:text-3xl py-6">
-        Let's Chat!
-        </h1>
+        <h1 class="text-xl md:text-3xl py-6">Let's Chat!</h1>
         <li
           v-for="(comment, i) in data.slice().reverse()"
           :key="i"
-          class="text-sm md:text-lg text-lightColor bg-secondary my-2 md:my-4 p-2 md:p-4 rounded-lg"
-  >
-    <Icon
-      name="heroicons:user-20-solid"
-      size="20"
-      class="text-accent1 dark:text-accent2"
-    /><span class="m-2 italic">{{ comment.username }}:</span>
-    <p class="p-2">
-      {{ comment.comments }}
-    </p>
-  </li>
-</ul>
-<p v-else class="text-center text-gray-500">No comments yet. Be the first to post!</p>
+          class="bg-secondary/20 dark:bg-secondary text-sm md:text-lg my-2 md:my-4 p-2 md:p-4 rounded-lg"
+        >
+          <Icon
+            name="heroicons:user-20-solid"
+            size="20"
+            class="text-accent1 dark:text-accent2"
+          /><span class="m-2 italic">{{ comment.username }}:</span>
+          <p class="p-2">
+            {{ comment.comments }}
+          </p>
+        </li>
+      </ul>
+      <p v-else class="text-center text-gray-500">
+        No comments yet. Be the first to post!
+      </p>
     </div>
   </div>
 </template>
 
 <script setup>
+import Papa from "papaparse";
+
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-const runtimeConfig = useRuntimeConfig();
 const username = ref("");
 const comments = ref("");
 const data = ref([]);
 let isOpen = ref(false);
+let isBannedModalOpen = ref(false);
+const bannedWords = ref([]);
 
+async function loadBannedWords() {
+  try {
+    const response = await fetch("/banned_words.csv");
+    const csvText = await response.text();
+    const parsed = Papa.parse(csvText, { skipEmptyLines: true });
+    // Flatten and clean up
+    bannedWords.value = parsed.data
+      .flat()
+      .map((w) => (w || "").trim().toLowerCase().replace(/,+$/, "")) // remove trailing commas
+      .filter((w) => !!w && w.length > 0);
+  } catch (error) {
+    console.error("Failed to load banned words:", error);
+  }
+}
+
+// Call this when the component mounts
 onMounted(async () => {
+  await loadBannedWords();
   if (user.value) {
     try {
       const { data: profileData, error } = await supabase
@@ -111,10 +161,23 @@ onMounted(async () => {
   }
 });
 
+// Helper to check for banned words
+function containsBannedWord(text) {
+  const lowerText = text.toLowerCase();
+  return bannedWords.value
+    .filter((word) => word && word.length > 0)
+    .some((word) => lowerText.includes(word));
+}
+
 // Post new comment
 async function postComment() {
   if (!username.value) {
     console.error("Username is not set. Cannot post comment.");
+    return;
+  }
+  // Word filter check
+  if (containsBannedWord(comments.value)) {
+    isBannedModalOpen.value = true;
     return;
   }
   try {
@@ -134,7 +197,7 @@ async function postComment() {
     if (fetchError) throw fetchError;
     data.value = updatedComments || [];
   } catch (error) {
-    console.error(`Error sending message: ${error}`);
+    console.error("Error sending message:", error.message || error);
   }
 }
 

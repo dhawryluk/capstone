@@ -23,6 +23,7 @@
     "express": "^5.1.0",
     "node-fetch": "^3.3.2",
     "nuxt": "^3.6.0",
+    "papaparse": "^5.5.3",
     "stripe": "^18.0.0",
     "vue": "latest",
     "vue-router": "latest"

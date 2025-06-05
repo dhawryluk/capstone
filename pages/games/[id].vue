@@ -16,7 +16,9 @@
     </div>
     <h2 class="text-2xl font-bold py-4">{{ game.name }}</h2>
     <p class="font-serif mb-4">{{ game.description_raw }}</p>
-    <div class="flex justify-between items-center py-4 text-sm text-gray-600">
+    <div
+      class="flex justify-between items-center py-4 text-sm text-darkColor dark:text-lightColor"
+    >
       <p class="py-2">Release Date: {{ game.released }}</p>
       <p class="py-2">Rating: {{ game.rating }}</p>
       <p class="py-2">
