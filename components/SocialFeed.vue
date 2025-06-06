@@ -76,7 +76,7 @@
       <ul v-if="data && data.length > 0">
         <h1 class="text-xl md:text-3xl py-6">Let's Chat!</h1>
         <li
-          v-for="(comment, i) in data.slice().reverse()"
+          v-for="(comment, i) in data"
           :key="i"
           class="bg-secondary/20 dark:bg-secondary text-sm md:text-lg my-2 md:my-4 p-2 md:p-4 rounded-lg"
         >
@@ -90,7 +90,10 @@
           </p>
         </li>
       </ul>
-      <p v-else class="text-center text-gray-500">
+      <PrimaryButton v-if="hasMore" @click="loadMore">
+        Load More
+      </PrimaryButton>
+      <p v-else-if="data.length === 0" class="text-center text-gray-500">
         No comments yet. Be the first to post!
       </p>
     </div>
@@ -109,6 +112,10 @@ let isOpen = ref(false);
 let isBannedModalOpen = ref(false);
 const bannedWords = ref([]);
 
+const page = ref(1);
+const pageSize = 12;
+const hasMore = ref(true);
+
 async function loadBannedWords() {
   try {
     const response = await fetch("/banned_words.csv");
@@ -117,14 +124,44 @@ async function loadBannedWords() {
     // Flatten and clean up
     bannedWords.value = parsed.data
       .flat()
-      .map((w) => (w || "").trim().toLowerCase().replace(/,+$/, "")) // remove trailing commas
+      .map((w) => (w || "").trim().toLowerCase().replace(/,+$/, ""))
       .filter((w) => !!w && w.length > 0);
   } catch (error) {
     console.error("Failed to load banned words:", error);
   }
 }
 
-// Call this when the component mounts
+async function fetchComments(reset = false) {
+  try {
+    if (reset) {
+      page.value = 1;
+      data.value = [];
+      hasMore.value = true;
+    }
+    const from = (page.value - 1) * pageSize;
+    const to = from + pageSize - 1;
+    const { data: commentsData, error } = await supabase
+      .from("social_feed")
+      .select("*")
+      .order("id", { ascending: false })
+      .range(from, to);
+
+    if (error) throw error;
+
+    if (!commentsData || commentsData.length < pageSize) {
+      hasMore.value = false;
+    }
+    data.value = [...data.value, ...(commentsData || [])];
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
+}
+
+function loadMore() {
+  page.value++;
+  fetchComments();
+}
+
 onMounted(async () => {
   await loadBannedWords();
   if (user.value) {
@@ -146,22 +183,9 @@ onMounted(async () => {
   } else {
     console.error("User is not logged in.");
   }
-
-  // Fetch comments
-  try {
-    const { data: commentsData, error } = await supabase
-      .from("social_feed")
-      .select("*");
-
-    if (error) throw error;
-
-    data.value = commentsData || [];
-  } catch (error) {
-    console.error("Error fetching comments:", error);
-  }
+  await fetchComments(true);
 });
 
-// Helper to check for banned words
 function containsBannedWord(text) {
   const lowerText = text.toLowerCase();
   return bannedWords.value
@@ -169,13 +193,11 @@ function containsBannedWord(text) {
     .some((word) => lowerText.includes(word));
 }
 
-// Post new comment
 async function postComment() {
   if (!username.value) {
     console.error("Username is not set. Cannot post comment.");
     return;
   }
-  // Word filter check
   if (containsBannedWord(comments.value)) {
     isBannedModalOpen.value = true;
     return;
@@ -189,19 +211,12 @@ async function postComment() {
 
     isOpen.value = true;
 
-    // Refresh comments after posting
-    const { data: updatedComments, error: fetchError } = await supabase
-      .from("social_feed")
-      .select("*");
-
-    if (fetchError) throw fetchError;
-    data.value = updatedComments || [];
+    await fetchComments(true);
   } catch (error) {
     console.error("Error sending message:", error.message || error);
   }
 }
 
-// Closing Pop-up
 async function isClosed() {
   isOpen.value = false;
   window.location.reload();

@@ -58,7 +58,7 @@ const getPlatformIcon = (slug) => {
     nintendo: "/icons/nintendo.svg",
     ios: "/icons/ios.svg",
     android: "/icons/android.svg",
-    linex: "/icons/linux.svg",
+    linux: "/icons/linux.svg",
     mac: "/icons/mac.svg",
     web: "/icons/web.svg",
   };
