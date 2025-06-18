@@ -11,12 +11,13 @@
       @input="searchAnime"
     />
     <ul class="list-none p-0">
-      <li
-        v-for="anime in animeList"
-        :key="anime.id"
-        class="mb-2 cursor-pointer text-accent1 dark:text-accent2 hover:underline"
-      >
-        <NuxtLink :to="`/anime/${anime.id}`">{{ anime.title }}</NuxtLink>
+      <li v-for="anime in animeList" :key="anime.id" class="mb-2">
+        <NuxtLink
+          :to="`/anime/${anime.id}`"
+          class="cursor-pointer text-accent1 dark:text-accent2 hover:underline"
+        >
+          {{ anime.title }}
+        </NuxtLink>
       </li>
     </ul>
     <h2 class="text-2xl font-bold my-6 text-center">Trending Now</h2>
@@ -41,6 +42,18 @@
         />
         <div class="p-4 mt-auto">
           <h3 class="text-lg font-semibold truncate">{{ anime.title }}</h3>
+          <div class="text-xs text-darkColor dark:text-lightColor mt-1">
+            Rating:
+            <span
+              v-if="anime.ageRating === 'R-18'"
+              class="text-red-500 font-semibold"
+            >
+              {{ anime.ageRating ? anime.ageRating : "N/A" }}
+            </span>
+            <span v-else class="text-accent1 dark:text-accent2 font-semibold">
+              {{ anime.ageRating ? anime.ageRating : "N/A" }}
+            </span>
+          </div>
         </div>
       </NuxtLink>
     </div>
@@ -54,6 +67,8 @@ export default {
       animeList: [],
       trendingAnime: [],
       searchQuery: "",
+      loading: false,
+      error: null,
     };
   },
   async created() {
@@ -62,80 +77,45 @@ export default {
   },
   methods: {
     async fetchAnimeList(search = "") {
+      this.loading = true;
+      this.error = null;
       try {
-        const query = `
-                    query ($page: Int, $perPage: Int, $search: String) {
-                        Page(page: $page, perPage: $perPage) {
-                            media(type: ANIME, search: $search) {
-                                id
-                                title {
-                                    romaji
-                                }
-                            }
-                        }
-                    }
-                `;
-        const variables = { page: 1, perPage: 10, search };
-        const response = await fetch("https://graphql.anilist.co", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query, variables }),
-        });
-
+        const response = await fetch(
+          `/api/anime?search=${encodeURIComponent(search)}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const result = await response.json();
-        this.animeList = result.data.Page.media.map((anime) => ({
+        const animeArr = await response.json();
+        this.animeList = animeArr.map((anime) => ({
           id: anime.id,
           title: anime.title.romaji,
+          ageRating:
+            anime.ageRating ||
+            anime.ageRatingGuide ||
+            (anime.adult ? "R-18" : "PG"),
         }));
       } catch (error) {
-        console.error("Error fetching anime list:", error.message);
-        console.error("Stack trace:", error.stack);
+        this.error = error.message;
+        this.animeList = [];
+      } finally {
+        this.loading = false;
       }
     },
     async fetchTrendingAnime() {
       try {
-        const query = `
-                    query {
-                        Page(page: 1, perPage: 15) {
-                            media(type: ANIME, sort: TRENDING_DESC) {
-                                id
-                                title {
-                                    romaji
-                                }
-                                coverImage {
-                                    extraLarge
-                                }
-                            }
-                        }
-                    }
-                `;
-        const response = await fetch("https://graphql.anilist.co", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query }),
-        });
-
+        const response = await fetch("/api/anime?trending=1");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        const result = await response.json();
-        this.trendingAnime = result.data.Page.media.map((anime) => ({
+        const animeArr = await response.json();
+        this.trendingAnime = animeArr.map((anime) => ({
           id: anime.id,
           title: anime.title.romaji,
-          image: anime.coverImage.extraLarge,
+          image: anime.coverImage?.extraLarge,
         }));
       } catch (error) {
         console.error("Error fetching trending anime:", error.message);
-        console.error("Stack trace:", error.stack);
       }
     },
     async searchAnime() {
