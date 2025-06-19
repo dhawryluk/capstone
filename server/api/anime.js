@@ -1,34 +1,53 @@
 export default defineEventHandler(async (event) => {
   const queryParams = getQuery(event);
-  const { search, trending } = queryParams;
+  const { trending } = queryParams;
+  const search =
+    typeof queryParams.search === "string" ? queryParams.search.trim() : "";
+  const page = parseInt(queryParams.page) || 1;
+  const perPage = parseInt(queryParams.perPage) || 15;
 
   let query, variables;
 
   if (trending) {
     query = `
-      query {
-        Page(page: 1, perPage: 15) {
+      query ($page: Int, $perPage: Int) {
+        Page(page: $page, perPage: $perPage) {
           media(type: ANIME, sort: TRENDING_DESC) {
             id
             title { romaji }
             coverImage { extraLarge }
+            isAdult
           }
         }
       }
     `;
-    variables = {};
-  } else {
+    variables = { page, perPage };
+  } else if (search) {
     query = `
       query ($page: Int, $perPage: Int, $search: String) {
         Page(page: $page, perPage: $perPage) {
           media(type: ANIME, search: $search) {
             id
             title { romaji }
+            isAdult
           }
         }
       }
     `;
-    variables = { page: 1, perPage: 10, search: search || "" };
+    variables = { page, perPage, search };
+  } else {
+    query = `
+      query ($page: Int, $perPage: Int) {
+        Page(page: $page, perPage: $perPage) {
+          media(type: ANIME) {
+            id
+            title { romaji }
+            isAdult
+          }
+        }
+      }
+    `;
+    variables = { page, perPage };
   }
 
   const response = await fetch("https://graphql.anilist.co", {
@@ -38,9 +57,10 @@ export default defineEventHandler(async (event) => {
   });
 
   if (!response.ok) {
+    const errorText = await response.text();
     throw createError({
       statusCode: response.status,
-      statusMessage: "AniList API error",
+      statusMessage: "AniList API error: " + errorText,
     });
   }
 

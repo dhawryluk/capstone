@@ -12,7 +12,7 @@
       <img
         :src="anime.image"
         :alt="anime.title"
-        class="w-full h-80 object-contain bg-white rounded-t-lg"
+        class="w-full h-80 object-cover bg-white rounded-t-lg"
         draggable="false"
       />
       <div class="p-4 mt-auto">
