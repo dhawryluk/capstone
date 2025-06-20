@@ -1,3 +1,7 @@
+import { defineEventHandler } from "h3";
+import { getQuery } from "h3";
+import _ from "lodash";
+
 export default defineEventHandler(async (event) => {
   const queryParams = getQuery(event);
   const { trending } = queryParams;
@@ -29,12 +33,31 @@ export default defineEventHandler(async (event) => {
           media(type: ANIME, search: $search) {
             id
             title { romaji }
+            coverImage { extraLarge }
             isAdult
           }
         }
       }
     `;
     variables = { page, perPage, search };
+  } else if (queryParams.upcoming) {
+    query = `
+      query ($page: Int, $perPage: Int) {
+        Page(page: $page, perPage: $perPage) {
+          media(
+            type: ANIME,
+            status_in: [NOT_YET_RELEASED, RELEASING],
+            sort: [POPULARITY_DESC, START_DATE_DESC]
+          ) {
+            id
+            title { romaji }
+            coverImage { extraLarge }
+            isAdult
+          }
+        }
+      }
+    `;
+    variables = { page, perPage };
   } else {
     query = `
       query ($page: Int, $perPage: Int) {
@@ -42,6 +65,7 @@ export default defineEventHandler(async (event) => {
           media(type: ANIME) {
             id
             title { romaji }
+            coverImage { extraLarge }
             isAdult
           }
         }
