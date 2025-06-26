@@ -1,17 +1,16 @@
 <template>
   <div class="mx-12">
-    <h1
-      class="w-full dark:bg-gradient-to-r dark:from-secondary dark:via-accent2 dark:to-darkColor bg-gradient-to-r from-lightColor via-accent2 to-white text-lightColor rounded-lg text-6xl font-bold ring-2 ring-accent1 dark:ring-accent2 text-center mb-8 py-4 font-sans drop-shadow-lg"
-    >
-      Gaming News
-    </h1>
+    <HeaderTitle>Gaming News</HeaderTitle>
     <div v-if="loading" class="text-center text-xl py-4">
       Loading articles...
     </div>
     <div v-else-if="error" class="text-center text-red-500 py-4">
       Error: {{ error }}
     </div>
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      v-else
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+    >
       <div v-for="article in articles" :key="article.id" class="border-b">
         <!-- Article Image -->
         <img

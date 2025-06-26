@@ -7,20 +7,22 @@
         class="h-full md:w-4/12 bg-white p-4 font-bold opacity-30 grid grid-cols-2 justify-evenly rounded-l-lg"
       >
         <div
-          class="flex flex-col justify-self-start text-left pt-10 text-4xl lg:text-6xl gap-4 bg-[url('/assets/images/wave.jpg')] bg-clip-text text-transparent"
+          class="flex flex-col justify-self-start text-left self-center text-4xl lg:text-6xl bg-[url('/assets/images/wave.jpg')] bg-clip-text text-transparent"
         >
-          <h2>Where</h2>
-          <h2>Gamers</h2>
-          <h2>Unite</h2>
+          <h2>
+            Where <span>Gamers</span> &amp; <span>Anime Lovers</span> Unite
+          </h2>
         </div>
         <div
-          class="flex flex-col justify-self-end justify-center text-8xl bg-[url('/assets/images/wave.jpg')] bg-clip-text text-transparent"
+          class="flex flex-col justify-self-end justify-center text-8xl bg-[url('/assets/images/wave.jpg')] bg-clip-text text-transparent tracking-widest whitespace-nowrap items-center"
         >
-          <p>4</p>
-          <p>P</p>
-          <p>L</p>
-          <p>A</p>
-          <p>Y</p>
+          <span class="flex flex-col items-center leading-none">
+            <span>4</span>
+            <span>P</span>
+            <span>L</span>
+            <span>A</span>
+            <span>Y</span>
+          </span>
         </div>
       </div>
     </div>
