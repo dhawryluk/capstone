@@ -151,7 +151,9 @@ async function fetchComments(reset = false) {
     if (!commentsData || commentsData.length < pageSize) {
       hasMore.value = false;
     }
-    data.value = [...data.value, ...(commentsData || [])];
+    data.value = reset
+      ? [...(commentsData || [])]
+      : [...data.value, ...(commentsData || [])];
   } catch (error) {
     console.error("Error fetching comments:", error);
   }

@@ -41,14 +41,22 @@
         </div>
       </div>
     </div>
+    <div v-if="hasMore" class="text-center mt-6">
+      <PrimaryButton @click="loadMore">Load More</PrimaryButton>
+    </div>
+    <p v-else class="text-center text-gray-500 mt-6">No more games to load.</p>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted, computed } from "vue";
+
 const search = ref("");
 const results = ref([]);
 const error = ref(null);
 const loading = ref(true);
+const page = ref(1);
+const hasMore = ref(true);
 
 const getPlatformIcon = (slug) => {
   const platformIcons = {
@@ -73,11 +81,12 @@ const filteredResults = computed(() =>
 
 const fetchGames = async () => {
   try {
-    const response = await fetch("/api/trending");
+    const response = await fetch(`/api/trending?page=${page.value}`);
     const data = await response.json();
 
     if (response.ok && data?.results) {
-      results.value = data.results;
+      results.value = [...results.value, ...data.results];
+      hasMore.value = data.hasMore;
     } else {
       console.warn("Data is not in the expected format or is missing:", data);
     }
@@ -86,6 +95,13 @@ const fetchGames = async () => {
     error.value = err.message;
   } finally {
     loading.value = false;
+  }
+};
+
+const loadMore = () => {
+  if (hasMore.value) {
+    page.value++;
+    fetchGames();
   }
 };
 
