@@ -1,75 +1,56 @@
-# Nuxt Minimal Starter
+# 4Play - Gaming & Anime Social Platform
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to **4Play**, a Nuxt 3-powered platform for gamers and anime fans to connect, discover trending games, chat, and explore curated anime content.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Features
 
-```bash
-# npm
-npm install
+- **Trending Games:**  
+  Browse new and trending games from the past year, filter by platform, and load more results with seamless pagination.
 
-# pnpm
-pnpm install
+- **Anime Explorer:**  
+  Discover trending and new anime, search by title, and view detailed anime pages with trailers and info.
 
-# yarn
-yarn install
+- **Social Feed:**  
+  Post comments, chat with the community, and enjoy real-time updates. Inappropriate language is automatically filtered.
 
-# bun
-bun install
-```
+- **Responsive Design:**  
+  Fully responsive UI with dark mode support and modern, accessible components.
 
-## Development Server
+---
 
-Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
-npm run dev
+## Key Technologies
 
-# pnpm
-pnpm dev
+- **Nuxt 3** (Vue 3, Vite)
+- **Tailwind CSS** for styling
+- **Supabase** for user authentication and social feed
+- **RAWG API** for games data
+- **AniList GraphQL API** for anime data
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
+---
 
 ## Production
 
-Build the application for production:
+Build and preview the app:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+
+## License
+
+MIT
+
+---
+
+## Credits
+
+- Game data: [RAWG Video Games Database](https://rawg.io/apidocs)
+- Anime data: [AniList API](https://anilist.gitbook.io)
+- UI: [Nuxt UI](https://ui.nuxt.com/), [Tailwind CSS](https://tailwindcss.com/)
